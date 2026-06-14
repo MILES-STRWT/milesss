@@ -53,46 +53,28 @@
             color: #888888;
         }
 
-        /* Hero Section */
+        /* Hero Section - Centrado de Logo Principal */
         .hero {
-            height: 70vh;
+            height: 75vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 0 20px;
             background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+            padding: 20px;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            line-height: 1;
+        .hero-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 450px;
+            width: 100%;
         }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: #888888;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-
-        .cta-btn {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 12px 35px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: background-color 0.3s;
-        }
-
-        .cta-btn:hover {
-            background-color: #cccccc;
+        .hero-logo {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         /* Productos Destacados */
@@ -172,9 +154,9 @@
     </nav>
 
     <section class="hero">
-        <h1>HEAVEN & HELL</h1>
-        <p>Diseño urbano conceptual con siluetas sobredimensionadas y estética de alta densidad.</p>
-        <a href="#" class="cta-btn">Ver Colección</a>
+        <div class="hero-logo-container">
+            <img src="LOGO FUEGO ROJO.png" alt="Logo MILES" class="hero-logo">
+        </div>
     </section>
 
     <section class="products">
