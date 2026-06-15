@@ -156,8 +156,28 @@
 
     <section class="hero">
         <div class="hero-logo-container">
-            <img src="LOGO FUEGO ROJO.png" alt="Logo MILES" class="hero-logo">
-        </div>
+           <!-- CONTENEDOR DEL LOGO CON ANIMACIÓN 3D INFINITA -->
+<div style="perspective: 1000px; display: inline-block;">
+    <img src="logo-ms.png" alt="Logo MILES" class="logo-3d-rotate" style="width: 120px; height: auto; display: block; animation: spin3D 8s linear infinite;">
+</div>
+
+<!-- ESTILOS PARA EL GIRO 3D (Puedes pegarlo justo debajo del logo) -->
+<style>
+@keyframes spin3D {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Efecto opcional: Si pasas el mouse por encima, acelera un poquito */
+.logo-3d-rotate:hover {
+    animation-duration: 4s;
+    cursor: pointer;
+}
+</style>
     </section>
 
  <section class="products">
