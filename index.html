@@ -1060,75 +1060,7 @@ window.addEventListener('click', function(event) {
     if (event.target == document.getElementById('modal-tallas-p9')) { cerrarModalGorraP9(); }
 });
 </script>
-    <!-- ==================== TARJETA GORRA 2 (AÑÁDELA A TU CUADRÍCULA) ==================== -->
-<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; font-family: 'Arial Black', Gadget, sans-serif;">
-    <div style="display: flex; flex-direction: column;">
-
-        <!-- Contenedor Cuadrado Blanco Limpio -->
-        <div style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-            <!-- Al darle clic abre el Modal P9 -->
-            <div onclick="abrirModalGorraP9()" style="display: flex; width: 100%; height: 100%; cursor: pointer; justify-content: center; align-items: center; padding: 15px; box-sizing: border-box;">
-                <img src="gorra-roja y blanca-frente.png" alt="Gorra Roja y Blanca Miles" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- ==================== VENTANA FLOTANTE DE COMPRA (MODAL P9) ==================== -->
-<div id="modal-tallas-p9" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; font-family: 'Arial', sans-serif;">
-    <div style="background: #0d0d0d; border: 1px solid #1a1a1a; padding: 30px 25px; border-radius: 12px; max-width: 440px; width: 100%; position: relative; color: #fff; box-sizing: border-box;">
-        
-        <!-- Botón de Cerrar -->
-        <div onclick="cerrarModalGorraP9()" style="position: absolute; top: 15px; right: 20px; text-align: center; cursor: pointer; color: #888; font-size: 11px;">
-            <span style="display: block; font-size: 18px; font-weight: bold; line-height: 10px;">&times;</span>
-            <span style="font-family: Arial, sans-serif; font-size: 10px;">Cerrar</span>
-        </div>
-        
-        <!-- Nombre y Precio al dar clic -->
-        <h2 style="margin: 15px 0 10px 0; font-size: 24px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; text-align: center; text-transform: uppercase;">GORRA MILES TRUCKER</h2>
-        <div style="font-size: 22px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; margin-bottom: 15px; text-align: center;">S/. 40.00</div>
-        
-        <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 20px;">
-        
-        <p style="font-size: 14px; text-align: left; margin-bottom: 12px;">
-            <span style="color: #666;">Talla:</span> <strong>Talla Única</strong>
-        </p>
-        
-        <!-- Botón de Talla Única -->
-        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
-            <button style="background: #ffffff; color: #000000; border: 1px solid #fff; width: 55px; height: 38px; font-weight: bold; border-radius: 6px; font-family: 'Arial Black', Gadget, sans-serif;">T/U</button>
-        </div>
-
-        <!-- Botón de WhatsApp -->
-        <button onclick="enviarWhatsAppP9()" style="background: #ffffff; color: #000000; border: none; width: 100%; padding: 14px 0; font-size: 14px; font-weight: bold; font-family: 'Arial Black', Gadget, sans-serif; border-radius: 4px; cursor: pointer;">
-            COMPRAR AHORA
-        </button>
-    </div>
-</div>
-
-<!-- ==================== SCRIPT DE FUNCIONAMIENTO JAVASCRIPT ==================== -->
-<script>
-function abrirModalGorraP9() { 
-    document.getElementById('modal-tallas-p9').style.display = 'flex'; 
-}
-function cerrarModalGorraP9() { 
-    document.getElementById('modal-tallas-p9').style.display = 'none'; 
-}
-function enviarWhatsAppP9() {
-    const numero = "51949776995";
-    const mensaje = `¡Hola! Me interesa comprar la GORRA MILES TRUCKER.\n*Talla:* T/U *Precio:* S/. 40.00 ¿Tienen stock disponible?`;
-    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
-    cerrarModalGorraP9();
-}
-
-// Cerrar al hacer clic afuera del cuadro negro
-window.addEventListener('click', function(event) {
-    if (event.target == document.getElementById('modal-tallas-p9')) { 
-        cerrarModalGorraP9(); 
-    }
-});
-</script>
+   
 
    
             </div>
