@@ -313,78 +313,67 @@
         </div>
     </div>
 
-<!-- TARJETA DE PRODUCTO MILES -->
-<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; font-family: 'Arial Black', Gadget, sans-serif;">
+<!-- TARJETA DE PRODUCTO MILES (Todo integrado y fijo) -->
+<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; max-width: 440px; margin: 0 auto; box-sizing: border-box; font-family: 'Arial', sans-serif;">
     <div style="display: flex; flex-direction: column; gap: 20px;">
 
-        <!-- CONTENEDOR DEL SLIDER (Fondo Blanco Puro) -->
+        <!-- CONTENEDOR DEL SLIDER (Fondo Blanco Puro - Fijo arriba) -->
         <div class="contenedor-slider-prenda" id="slider-metal-p5" style="background: #ffffff; border-radius: 4px; position: relative; min-height: 350px; display: flex; overflow: hidden; justify-content: center; align-items: center;">
             
-            <!-- Al hacer clic en las fotos abre el modal exacto -->
-            <div onclick="abrirModalTallas()" style="display: flex; width: 100%; height: 100%; cursor: pointer;">
-                <div class="wrapper-imagenes" id="wrapper-p5" style="display: flex; width: 100%; transition: transform 0.3s ease-in-out;">
-                    <!-- Vista Frente -->
-                    <div style="min-width: 100%; display: flex; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box;">
-                        <img src="polo-metal-frente.png" alt="Polo Metal Frente" style="width: 100%; max-width: 320px; object-fit: contain; pointer-events: none;">
-                    </div>
-                    <!-- Vista Espalda -->
-                    <div style="min-width: 100%; display: flex; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box;">
-                        <img src="polo-metal-espalda.png" alt="Polo Metal Espalda" style="width: 100%; max-width: 320px; object-fit: contain; pointer-events: none;">
-                    </div>
+            <div class="wrapper-imagenes" id="wrapper-p5" style="display: flex; width: 100%; transition: transform 0.3s ease-in-out;">
+                <!-- Vista Frente -->
+                <div style="min-width: 100%; display: flex; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box;">
+                    <img src="polo-metal-frente.png" alt="Polo Metal Frente" style="width: 100%; max-width: 320px; object-fit: contain; pointer-events: none;">
+                </div>
+                <!-- Vista Espalda -->
+                <div style="min-width: 100%; display: flex; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box;">
+                    <img src="polo-metal-espalda.png" alt="Polo Metal Espalda" style="width: 100%; max-width: 320px; object-fit: contain; pointer-events: none;">
                 </div>
             </div>
             
             <!-- PUNTOS DE NAVEGACIÓN -->
             <div style="position: absolute; bottom: 15px; display: flex; gap: 8px; z-index: 10; left: 50%; transform: translateX(-50%);">
-                <span onclick="event.stopPropagation(); moverSliderMetal(0)" class="punto-m5" style="width: 10px; height: 10px; border-radius: 50%; background: #000; cursor: pointer; opacity: 1;"></span>
-                <span onclick="event.stopPropagation(); moverSliderMetal(1)" class="punto-m5" style="width: 10px; height: 10px; border-radius: 50%; background: #000; cursor: pointer; opacity: 0.4;"></span>
+                <span onclick="moverSliderMetal(0)" class="punto-m5" style="width: 10px; height: 10px; border-radius: 50%; background: #000; cursor: pointer; opacity: 1;"></span>
+                <span onclick="moverSliderMetal(1)" class="punto-m5" style="width: 10px; height: 10px; border-radius: 50%; background: #000; cursor: pointer; opacity: 0.4;"></span>
             </div>
 
         </div>
 
-    </div>
-</div>
+        <!-- CUADRO DE DETALLES, TALLAS Y PRECIO (Fijo abajo, copiado de image_f77b0d.png) -->
+        <div style="background: #0d0d0d; border: 1px solid #1a1a1a; padding: 25px 20px; border-radius: 12px; position: relative; color: #fff; box-sizing: border-box;">
+            
+            <!-- Título de la Prenda Corregido -->
+            <h2 style="margin: 0 0 10px 0; font-size: 24px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; letter-spacing: 0.5px; text-align: center; line-height: 1.2; text-transform: uppercase;">
+                PRENDA 5 - BLANCO
+            </h2>
+            
+            <!-- Precio -->
+            <div style="font-size: 22px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; margin-bottom: 15px; text-align: left;">
+                S/. 50.00
+            </div>
+            
+            <!-- Línea Divisoria -->
+            <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 20px;">
+            
+            <!-- Indicador de Selección -->
+            <p style="font-size: 14px; text-align: left; margin-bottom: 12px; font-family: Arial, sans-serif;">
+                <span style="color: #666;">Talla:</span> <span id="talla-seleccionada-texto" style="font-weight: bold; color: #fff;">Selecciona Talla</span>
+            </p>
+            
+            <!-- CONTENEDOR DE BOTONES S, M, L, XL -->
+            <div style="display: flex; gap: 10px; margin-bottom: 25px; text-align: left;">
+                <button onclick="seleccionarTalla('S')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">S</button>
+                <button onclick="seleccionarTalla('M')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">M</button>
+                <button onclick="seleccionarTalla('L')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">L</button>
+                <button onclick="seleccionarTalla('XL')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">XL</button>
+            </div>
 
-<!-- VENTANA FLOTANTE COPIADA DE IMAGE_F7E06C.PNG -->
-<div id="modal-tallas-p5" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; font-family: 'Arial', sans-serif;">
-    <div style="background: #0d0d0d; border: 1px solid #1a1a1a; padding: 30px 25px; border-radius: 12px; max-width: 440px; width: 100%; position: relative; color: #fff; box-sizing: border-box;">
-        
-        <!-- Botón Cerrar X superior derecho -->
-        <div onclick="cerrarModalTallas()" style="position: absolute; top: 15px; right: 20px; text-align: center; cursor: pointer; color: #888; font-size: 11px;">
-            <span style="display: block; font-size: 18px; font-weight: bold; line-height: 10px;">&times;</span>
-            <span style="font-family: Arial, sans-serif; font-size: 10px;">Cerrar</span>
-        </div>
-        
-        <!-- Título de la Prenda -->
-        <h2 style="margin: 15px 0 10px 0; font-size: 24px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; letter-spacing: 0.5px; text-align: center; line-height: 1.2; text-transform: uppercase;">
-            PRENDA 4 - AZUL MARINO
-        </h2>
-        
-        <!-- Precio -->
-        <div style="font-size: 22px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; margin-bottom: 15px; text-align: left;">
-            S/. 50.00
-        </div>
-        
-        <!-- Línea Divisoria -->
-        <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 20px;">
-        
-        <!-- Indicador de Selección -->
-        <p style="font-size: 14px; text-align: left; margin-bottom: 12px; font-family: Arial, sans-serif;">
-            <span style="color: #666;">Talla:</span> <span id="talla-seleccionada-texto" style="font-weight: bold; color: #fff;">Selecciona Talla</span>
-        </p>
-        
-        <!-- CONTENEDOR DE BOTONES S, M, L, XL -->
-        <div style="display: flex; gap: 10px; margin-bottom: 25px; text-align: left;">
-            <button onclick="seleccionarTalla('S')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">S</button>
-            <button onclick="seleccionarTalla('M')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">M</button>
-            <button onclick="seleccionarTalla('L')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">L</button>
-            <button onclick="seleccionarTalla('XL')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">XL</button>
+            <!-- BOTÓN COMPRAR AHORA -->
+            <button onclick="enviarWhatsApp()" style="background: #ffffff; color: #000000; border: none; width: 100%; padding: 14px 0; font-size: 14px; font-weight: bold; font-family: 'Arial Black', Gadget, sans-serif; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">
+                COMPRAR AHORA
+            </button>
         </div>
 
-        <!-- BOTÓN COMPRAR AHORA -->
-        <button onclick="enviarWhatsApp()" style="background: #ffffff; color: #000000; border: none; width: 100%; padding: 14px 0; font-size: 14px; font-weight: bold; font-family: 'Arial Black', Gadget, sans-serif; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">
-            COMPRAR AHORA
-        </button>
     </div>
 </div>
 
@@ -401,21 +390,10 @@ function moverSliderMetal(indice) {
     });
 }
 
-function abrirModalTallas() {
-    document.getElementById('modal-tallas-p5').style.display = 'flex';
-}
-
-function cerrarModalTallas() {
-    document.getElementById('modal-tallas-p5').style.display = 'none';
-}
-
 function seleccionarTalla(talla) {
     tallaSeleccionada = talla;
-    
-    // Actualizar el texto en pantalla
     document.getElementById('talla-seleccionada-texto').innerText = talla;
     
-    // Cambiar estilos visuales de los botones para marcar cuál está activo
     const botones = document.querySelectorAll('.btn-talla-p5');
     botones.forEach(btn => {
         if(btn.innerText === talla) {
@@ -435,19 +413,11 @@ function enviarWhatsApp() {
     }
     
     const numero = "51949776995";
-    const mensaje = `Hola MILES, quiero comprar el Polo Prenda 4 Azul Marino en talla *${tallaSeleccionada}*.`;
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    // Mensaje de WhatsApp actualizado para la Prenda 5
+    const mensaje = `¡Hola! Me interesa comprar la PRENDA 5 - BLANCO.\n*Talla:* ${tallaSeleccionada} *Precio:* S/. 50.00 ¿Tienen stock disponible?`;
     
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
-    cerrarModalTallas();
-}
-
-// Cerrar si hacen clic fuera de la caja
-window.onclick = function(event) {
-    const modal = document.getElementById('modal-tallas-p5');
-    if (event.target == modal) {
-        cerrarModalTallas();
-    }
 }
 </script>
 }
