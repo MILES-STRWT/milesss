@@ -314,13 +314,13 @@
     </div>
 
 <!-- TARJETA DE PRODUCTO MILES -->
-<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; font-family: sans-serif;">
+<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; font-family: 'Arial Black', Gadget, sans-serif;">
     <div style="display: flex; flex-direction: column; gap: 20px;">
 
-        <!-- CONTENEDOR DEL SLIDER (Al hacer clic abre las tallas) -->
+        <!-- CONTENEDOR DEL SLIDER (Fondo Blanco Puro) -->
         <div class="contenedor-slider-prenda" id="slider-metal-p5" style="background: #ffffff; border-radius: 4px; position: relative; min-height: 350px; display: flex; overflow: hidden; justify-content: center; align-items: center;">
             
-            <!-- Contenedor clickeable de imágenes -->
+            <!-- Al hacer clic en las fotos abre el modal exacto -->
             <div onclick="abrirModalTallas()" style="display: flex; width: 100%; height: 100%; cursor: pointer;">
                 <div class="wrapper-imagenes" id="wrapper-p5" style="display: flex; width: 100%; transition: transform 0.3s ease-in-out;">
                     <!-- Vista Frente -->
@@ -345,30 +345,53 @@
     </div>
 </div>
 
-<!-- VENTANA FLOTANTE (MODAL DE TALLAS) -->
-<div id="modal-tallas-p5" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; font-family: sans-serif;">
-    <div style="background: #111; border: 1px solid #333; padding: 25px; border-radius: 12px; max-width: 450px; width: 100%; text-align: center; position: relative; color: #fff;">
+<!-- VENTANA FLOTANTE COPIADA DE IMAGE_F7E06C.PNG -->
+<div id="modal-tallas-p5" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; font-family: 'Arial', sans-serif;">
+    <div style="background: #0d0d0d; border: 1px solid #1a1a1a; padding: 30px 25px; border-radius: 12px; max-width: 440px; width: 100%; position: relative; color: #fff; box-sizing: border-box;">
         
-        <!-- Botón para cerrar (X) -->
-        <span onclick="cerrarModalTallas()" style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #999;">&times;</span>
+        <!-- Botón Cerrar X superior derecho -->
+        <div onclick="cerrarModalTallas()" style="position: absolute; top: 15px; right: 20px; text-align: center; cursor: pointer; color: #888; font-size: 11px;">
+            <span style="display: block; font-size: 18px; font-weight: bold; line-height: 10px;">&times;</span>
+            <span style="font-family: Arial, sans-serif; font-size: 10px;">Cerrar</span>
+        </div>
         
-        <h3 style="margin-top: 0; font-size: 18px; letter-spacing: 1px; text-transform: uppercase;">Selecciona tu Talla</h3>
-        <p style="font-size: 13px; color: #888; margin-bottom: 20px;">Escoge una talla para ordenar por WhatsApp</p>
+        <!-- Título de la Prenda -->
+        <h2 style="margin: 15px 0 10px 0; font-size: 24px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; letter-spacing: 0.5px; text-align: center; line-height: 1.2; text-transform: uppercase;">
+            PRENDA 4 - AZUL MARINO
+        </h2>
         
-        <!-- BOTONES DE TALLAS -->
-        <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 25px;">
-            <button onclick="enviarWhatsApp('S')" style="background: #fff; color: #000; border: none; width: 50px; height: 50px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 16px;">S</button>
-            <button onclick="enviarWhatsApp('M')" style="background: #fff; color: #000; border: none; width: 50px; height: 50px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 16px;">M</button>
-            <button onclick="enviarWhatsApp('L')" style="background: #fff; color: #000; border: none; width: 50px; height: 50px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 16px;">L</button>
-            <button onclick="enviarWhatsApp('XL')" style="background: #fff; color: #000; border: none; width: 50px; height: 50px; font-weight: bold; border-radius: 8px; cursor: pointer; font-size: 16px;">XL</button>
+        <!-- Precio -->
+        <div style="font-size: 22px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; margin-bottom: 15px; text-align: left;">
+            S/. 50.00
+        </div>
+        
+        <!-- Línea Divisoria -->
+        <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 20px;">
+        
+        <!-- Indicador de Selección -->
+        <p style="font-size: 14px; text-align: left; margin-bottom: 12px; font-family: Arial, sans-serif;">
+            <span style="color: #666;">Talla:</span> <span id="talla-seleccionada-texto" style="font-weight: bold; color: #fff;">Selecciona Talla</span>
+        </p>
+        
+        <!-- CONTENEDOR DE BOTONES S, M, L, XL -->
+        <div style="display: flex; gap: 10px; margin-bottom: 25px; text-align: left;">
+            <button onclick="seleccionarTalla('S')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">S</button>
+            <button onclick="seleccionarTalla('M')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">M</button>
+            <button onclick="seleccionarTalla('L')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">L</button>
+            <button onclick="seleccionarTalla('XL')" class="btn-talla-p5" style="background: transparent; color: #fff; border: 1px solid #fff; width: 48px; height: 38px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; font-family: 'Arial Black', Gadget, sans-serif;">XL</button>
         </div>
 
-        <p style="font-size: 11px; color: #555; margin: 0;">MILES STREETWEAR</p>
+        <!-- BOTÓN COMPRAR AHORA -->
+        <button onclick="enviarWhatsApp()" style="background: #ffffff; color: #000000; border: none; width: 100%; padding: 14px 0; font-size: 14px; font-weight: bold; font-family: 'Arial Black', Gadget, sans-serif; text-transform: uppercase; border-radius: 4px; cursor: pointer; letter-spacing: 0.5px;">
+            COMPRAR AHORA
+        </button>
     </div>
 </div>
 
-<!-- SCRIPT LOGIC (Controla el slider, abre la ventana y manda a WhatsApp con la talla) -->
+<!-- LÓGICA JAVASCRIPT -->
 <script>
+let tallaSeleccionada = "";
+
 function moverSliderMetal(indice) {
     const wrapper = document.getElementById('wrapper-p5');
     const puntos = document.querySelectorAll('#slider-metal-p5 .punto-m5');
@@ -386,24 +409,47 @@ function cerrarModalTallas() {
     document.getElementById('modal-tallas-p5').style.display = 'none';
 }
 
-function enviarWhatsApp(talla) {
+function seleccionarTalla(talla) {
+    tallaSeleccionada = talla;
+    
+    // Actualizar el texto en pantalla
+    document.getElementById('talla-seleccionada-texto').innerText = talla;
+    
+    // Cambiar estilos visuales de los botones para marcar cuál está activo
+    const botones = document.querySelectorAll('.btn-talla-p5');
+    botones.forEach(btn => {
+        if(btn.innerText === talla) {
+            btn.style.background = "#ffffff";
+            btn.style.color = "#000000";
+        } else {
+            btn.style.background = "transparent";
+            btn.style.color = "#ffffff";
+        }
+    });
+}
+
+function enviarWhatsApp() {
+    if (tallaSeleccionada === "") {
+        alert("Por favor, selecciona una talla antes de comprar.");
+        return;
+    }
+    
     const numero = "51949776995";
-    const mensaje = `Hola MILES, me interesa el Polo Miles Dreams Blanco en talla *${talla}*. ¿Tienen stock disponible?`;
+    const mensaje = `Hola MILES, quiero comprar el Polo Prenda 4 Azul Marino en talla *${tallaSeleccionada}*.`;
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     
-    // Abre WhatsApp en una pestaña nueva
     window.open(url, '_blank');
-    
-    // Cierra la ventana flotante automáticamente
     cerrarModalTallas();
 }
 
-// Cerrar el modal si hacen clic fuera del cuadro negro
+// Cerrar si hacen clic fuera de la caja
 window.onclick = function(event) {
     const modal = document.getElementById('modal-tallas-p5');
     if (event.target == modal) {
         cerrarModalTallas();
     }
+}
+</script>
 }
 </script>
     </div>
