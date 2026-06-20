@@ -985,14 +985,14 @@ function procesarCompraCrema() {
     
             <div class="product-card">
                 <div 
-     <!-- CONTENEDOR EN CUADRÍCULA (GRID) IGUAL AL DE LOS POLOS -->
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; box-sizing: border-box; padding: 20px 0;">
+   <!-- ==================== CONTENEDOR EN CUADRÍCULA (GRID) FIJO 3 COLUMNAS ==================== -->
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; box-sizing: border-box; padding: 20px 0;">
 
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%; box-sizing: border-box; padding: 20px 0;">
-
+    <!-- ==================== GORRA 1 (GRIS) ==================== -->
     <div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative;">
         <div style="display: flex; flex-direction: column;">
-            <div style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center;">
+            <!-- Contenedor Cuadrado Blanco Fijo (La gris se queda normal porque su imagen ya tiene espacio libre) -->
+            <div style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
                 <div onclick="abrirModalGorraP8()" style="display: flex; width: 100%; height: 100%; cursor: pointer; justify-content: center; align-items: center;">
                     <img src="gorra-gris-frente.png" alt="Gorra Gris Miles" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
                 </div>
@@ -1000,9 +1000,11 @@ function procesarCompraCrema() {
         </div>
     </div>
 
+    <!-- ==================== GORRA 2 (ROJA Y BLANCA) ==================== -->
     <div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative;">
         <div style="display: flex; flex-direction: column;">
-            <div style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center;">
+            <!-- Contenedor Cuadrado Blanco Fijo + PADDING PARA ACHICAR LA IMAGEN -->
+            <div style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center; padding: 45px; box-sizing: border-box;">
                 <div onclick="abrirModalGorraP9()" style="display: flex; width: 100%; height: 100%; cursor: pointer; justify-content: center; align-items: center;">
                     <img src="gorra-roja y blanca-frente.png" alt="Gorra Roja y Blanca Miles" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
                 </div>
@@ -1010,12 +1012,19 @@ function procesarCompraCrema() {
         </div>
     </div>
 
+    <!-- ==================== GORRA 3 (AZUL Y BLANCA) ==================== -->
     <div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative;">
         <div style="display: flex; flex-direction: column;">
-            <div style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center;">
+            <!-- Contenedor Cuadrado Blanco Fijo + PADDING PARA ACHICAR LA IMAGEN -->
+            <div style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center; padding: 45px; box-sizing: border-box;">
                 <div onclick="abrirModalGorraP10()" style="display: flex; width: 100%; height: 100%; cursor: pointer; justify-content: center; align-items: center;">
                     <img src="gorra azul.png" alt="Gorra Azul Miles" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
                 </div>
+            </div>
+        </div>
+    </div>
+
+</div>
             </div>
         </div>
     </div>
