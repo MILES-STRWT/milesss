@@ -455,7 +455,7 @@ window.addEventListener('click', function(event) {
 </div>
 
 
-});
+
 </script>
    <!-- TARJETA DE PRODUCTO MILES - PRENDA AZUL -->
 <div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; font-family: 'Arial Black', Gadget, sans-serif;">
@@ -498,7 +498,7 @@ window.addEventListener('click', function(event) {
         </div>
         
         <h2 style="margin: 15px 0 10px 0; font-size: 24px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; letter-spacing: 0.5px; text-align: center; line-height: 1.2; text-transform: uppercase;">
-            PRENDA 7 - AZUL
+            PRENDA 6 - AZUL
         </h2>
         
         <div style="font-size: 22px; font-family: 'Arial Black', Gadget, sans-serif; font-weight: 900; margin-bottom: 15px; text-align: left;">
@@ -529,23 +529,23 @@ let tallaSeleccionadaP6 = "";
 
 function moverSliderP6(indice) {
     const wrapper = document.getElementById('wrapper-p6');
-    const puntos = document.querySelectorAll('#slider-metal-p6 .punto-m7');
+    const puntos = document.querySelectorAll('#slider-metal-p6 .punto-m6');
     wrapper.style.transform = `translateX(-${indice * 100}%)`;
     puntos.forEach((punto, i) => {
         punto.style.opacity = (i === indice) ? '1' : '0.4';
     });
 }
 
-function abrirModalTallasP7() {
+function abrirModalTallasP6() {
     document.getElementById('modal-tallas-p6').style.display = 'flex';
 }
 
 // Cambiado de nombre para evitar conflictos
-function cerrarModalTallasP7() {
-    document.getElementById('modal-tallas-p7').style.display = 'none';
+function cerrarModalTallasP6() {
+    document.getElementById('modal-tallas-p6').style.display = 'none';
 }
 
-function seleccionarTallaP7(talla) {
+function seleccionarTallaP6(talla) {
     tallaSeleccionadaP7 = talla;
     document.getElementById('talla-seleccionada-texto-p6').innerText = talla;
     
@@ -561,21 +561,21 @@ function seleccionarTallaP7(talla) {
     });
 }
 
-function enviarWhatsAppP7() {
-    if (tallaSeleccionadaP7 === "") {
+function enviarWhatsAppP6() {
+    if (tallaSeleccionadaP6 === "") {
         alert("Por favor, selecciona una talla antes de comprar.");
         return;
     }
     const numero = "51949776995";
-    const mensaje = `¡Hola! Me interesa comprar la PRENDA 6 - AZUL.\n*Talla:* ${tallaSeleccionadaP7} *Precio:* S/. 50.00 ¿Tienen stock disponible?`;
+    const mensaje = `¡Hola! Me interesa comprar la PRENDA 6 - AZUL.\n*Talla:* ${tallaSeleccionadaP6} *Precio:* S/. 50.00 ¿Tienen stock disponible?`;
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
-    cerrarModalTallasP7();
+    cerrarModalTallasP6();
 }
 
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('modal-tallas-p6');
-    if (event.target == modal) { cerrarModalTallasP7(); }
+    if (event.target == modal) { cerrarModalTallasP6(); }
 });
 </script> 
     </div>
