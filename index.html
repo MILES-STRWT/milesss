@@ -959,20 +959,7 @@ function procesarCompraCrema() {
   }
 </script> ```
 
----
-
-### 2. El código está todo metido en una sola línea (Comentarios bloqueando todo)
-Si te fijas en la captura, pusiste un comentario de doble barra: `// 1. Detiene el evento...` y `// 2. Abre la pestaña...`.
-
-En JavaScript, el símbolo `//` **comenta y anula absolutamente TODO lo que esté a su derecha en esa misma línea**. Como tu editor de código o tu formato juntó todo el código en un solo bloque horizontal continuo (en una sola línea gigante), **la primera doble barra `//` anuló por completo todo el resto de las funciones**. Por eso el botón de comprar no sabe a dónde ir: la función literalmente se borró para el navegador.
-
----
-
-### 🛠️ ¿Cómo solucionarlo ahora mismo?
-
-1. Ve a tu editor de código y busca esa zona abajo de las fotos de las gorras Miles.
-2. Borra por completo ese bloque de texto largo que se ve en la pantalla.
-3. Asegúrate de abrir un `<script>` limpio.
+<script>` limpio.
 4. Pega el código **sin comentarios de texto (`//`)** para evitar que se vuelva a bugear si se junta en una sola línea. Copia y pega esto tal cual:
 
 ```html
