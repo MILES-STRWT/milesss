@@ -528,19 +528,19 @@ window.addEventListener('click', function(event) {
 </div>
 
 <!-- =============================================
-     PRENDA 7: GORRA GRIS (ESTRUCTURA FIJA Y CLIC ACTIVO)
+     PRENDA 7: GORRA GRIS (UBICACIÓN CORREGIDA)
 ================================================== -->
-<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; width: 100%; max-width: 320px; display: block; float: left; margin: 20px 0 40px 10px; clear: both;">
+<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; width: 100%; max-width: 320px; display: block; float: left; margin: 20px 0 40px 10px; clear: both; z-index: 99;">
     <div style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
-        <!-- FOTO DE LA GORRA (Clic Restaurado) -->
-        <div onclick="abrirModalGorraP7()" style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center; cursor: pointer; width: 100%;">
+        <!-- FOTO DE LA GORRA (Clic Asegurado) -->
+        <div onclick="abrirModalGorraP7()" style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center; cursor: pointer; width: 100%; z-index: 100;">
             <img src="gorra-gris-frente.png" alt="Gorra Gris Miles" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
         </div>
 
         <!-- COLUMNA DE DETALLES -->
         <div class="informacion-interna" style="display: none; flex-direction: column; justify-content: center; position: relative; min-height: 320px; flex: 1;">
             <!-- BOTÓN "X" PARA CERRAR -->
-            <div onclick="cerrarDetallesPrenda(this)" style="position: absolute; top: -10px; right: 0; text-align: center; cursor: pointer; color: #aaa; z-index: 10;">
+            <div onclick="cerrarDetallesPrenda(this)" style="position: absolute; top: -10px; right: 0; text-align: center; cursor: pointer; color: #aaa; z-index: 101;">
                 <span style="font-size: 24px; font-weight: bold; display: block; line-height: 20px;">&times;</span>
                 <span style="font-size: 0.65rem; display: block; margin-top: 2px;">Cerrar</span>
             </div>
@@ -594,6 +594,7 @@ function enviarWhatsAppP7() {
     let mensaje = encodeURIComponent("¡Hola! Quiero comprar la GORRA MILES GRIS en Talla: " + tallaSeleccionadaP7 + " por S/. 40.00.");
     window.open("https://wa.me/" + numeroTelf + "?text=" + mensaje, "_blank");
 }
+</script>
 </script>
 </script>
 </div> 
