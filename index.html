@@ -526,21 +526,21 @@ window.addEventListener('click', function(event) {
 
     </div>
 </div>
-
+<script>
 <!-- =============================================
-     PRENDA 7: GORRA GRIS (POSICIÓN Y CLIC SOLUCIONADOS)
+     PRENDA 7: GORRA GRIS (UBICACIÓN DETECTADA)
 ================================================== -->
-<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; width: 100%; max-width: 320px; display: block; float: left; margin: 20px 0 40px 10px; clear: both; z-index: 10;">
+<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; width: 100%; max-width: 320px; display: block; float: left; margin: 30px 0 50px 10px; clear: both; z-index: 999;">
     <div style="display: flex; flex-direction: column; gap: 20px; height: 100%;">
-        <!-- FOTO DE LA GORRA (Clic Operativo) -->
+        <!-- FOTO DE LA GORRA -->
         <div onclick="abrirModalGorraP7()" style="background: #ffffff; border-radius: 4px; position: relative; height: 320px; display: flex; justify-content: center; align-items: center; cursor: pointer;">
             <img src="gorra-gris-frente.png" alt="Gorra Gris Miles" style="width: 100%; height: 100%; object-fit: contain; pointer-events: none;">
         </div>
 
-        <!-- COLUMNA DE DETALLES (Nativa de tu sitio) -->
+        <!-- COLUMNA DE DETALLES -->
         <div class="informacion-interna" style="display: none; flex-direction: column; justify-content: center; position: relative; min-height: 320px; flex: 1;">
             <!-- BOTÓN "X" PARA CERRAR -->
-            <div onclick="cerrarDetallesPrenda(this)" style="position: absolute; top: -10px; right: 0; text-align: center; cursor: pointer; color: #aaa; z-index: 20;">
+            <div onclick="cerrarDetallesPrenda(this)" style="position: absolute; top: -10px; right: 0; text-align: center; cursor: pointer; color: #aaa; z-index: 10;">
                 <span style="font-size: 24px; font-weight: bold; display: block; line-height: 20px;">&times;</span>
                 <span style="font-size: 0.65rem; display: block; margin-top: 2px;">Cerrar</span>
             </div>
@@ -595,11 +595,7 @@ function enviarWhatsAppP7() {
     window.open("https://wa.me/" + numeroTelf + "?text=" + mensaje, "_blank");
 }
 </script>
-</script>
-</script>
-</script>
-</div> 
-<script>
+    
 let tallaSeleccionadaP6 = "";
 
 function moverSliderP6(indice) {
