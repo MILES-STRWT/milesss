@@ -151,16 +151,22 @@
         }
 
         .card.active .product-details {
-            max-height: 150px;
+            max-height: 180px;
             opacity: 1;
             margin-top: 10px;
         }
 
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
         .size {
             font-size: 14px;
-            color: #333;
+            color: #555;
             margin-bottom: 15px;
-            font-weight: bold;
         }
 
         /* Botón de compra */
@@ -222,8 +228,9 @@
             <div class="click-hint">Haz clic para ver detalles</div>
             
             <div class="product-details" onclick="event.stopPropagation()">
+                <div class="price">S/. 50</div>
                 <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20negra" target="_blank" class="btn-buy">Comprar</a>
+                <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20negra%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
             </div>
         </div>
     </section>
