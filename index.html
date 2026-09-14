@@ -258,7 +258,126 @@ header {
          <!-- CONTENEDOR PRINCIPAL AUTOMÁTICO (CSS GRID SEGURO) -->
 <div class="cuadricula-de-productos" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; justify-content: center; max-width: 1300px; margin: 0 auto; padding: 20px; font-family: sans-serif;">
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MILESS - Gorra Negra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
+        /* Cuadro flotante */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Títulos de la gorra */
+        .brand-name {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin: 15px 0 2px;
+            color: #111;
+            text-transform: uppercase;
+        }
+
+        .product-subtitle {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+            font-style: italic;
+        }
+
+        .click-hint {
+            font-size: 11px;
+            color: #999;
+            margin: 5px 0;
+        }
+
+        /* Información oculta que aparece al hacer clic */
+        .product-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .card.active .product-details {
+            max-height: 150px;
+            opacity: 1;
+            margin-top: 10px;
+        }
+
+        .size {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* Botón de compra */
+        .btn-buy {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .btn-buy:hover {
+            background-color: #1ebe5d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cuadro flotante de la gorra -->
+    <div class="card" onclick="this.classList.toggle('active')">
+        <img src="gorra-negra-miles.png" alt="Gorra MILESS Negra">
+        
+        <!-- Títulos actualizados -->
+        <div class="brand-name">MILESS</div>
+        <div class="product-subtitle">the kings of the city</div>
+        <div class="click-hint">Haz clic para ver detalles</div>
+        
+        <div class="product-details" onclick="event.stopPropagation()">
+            <div class="size">Talla: T/U (Talla Única)</div>
+            <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20negra" target="_blank" class="btn-buy">Comprar</a>
+        </div>
+    </div>
+
+</body>
+</html>
 
 
 </script>
