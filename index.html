@@ -96,6 +96,8 @@
             justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* Cuadro flotante de la gorra */
@@ -116,9 +118,13 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
+        /* ESTRICTO: Control de tamaño igual para todas las imágenes de las gorras */
         .card img {
             width: 100%;
+            height: 230px;
+            object-fit: cover;
             border-radius: 8px;
+            background-color: #f9f9f9;
         }
 
         /* Títulos de la gorra */
@@ -196,6 +202,7 @@
             color: #444444;
             font-size: 0.8rem;
             text-transform: uppercase;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -220,17 +227,15 @@
         </div>
     </section>
 
-    <!-- Sección de Productos (Gorras) -->
+    <!-- Sección de Productos (Las 5 Gorras) -->
     <section class="products">
         
-        <!-- PRIMERA GORRA -->
+        <!-- 1. GORRA NEGRA CON BLANCO -->
         <div class="card" onclick="this.classList.toggle('active')">
             <img src="gorra-negra-miles.png" alt="Gorra MILESS Negra">
-            
             <div class="brand-name">MILESS</div>
             <div class="product-subtitle">the kings of the city</div>
             <div class="click-hint">Haz clic para ver detalles</div>
-            
             <div class="product-details" onclick="event.stopPropagation()">
                 <div class="price">S/. 50</div>
                 <div class="size">Talla: T/U (Talla Única)</div>
@@ -238,18 +243,55 @@
             </div>
         </div>
 
-        <!-- SEGUNDA GORRA (Total Black) -->
+        <!-- 2. GORRA TOTAL BLACK -->
         <div class="card" onclick="this.classList.toggle('active')">
             <img src="gorra-total black.png" alt="Gorra MILESS Total Black">
-            
             <div class="brand-name">MILESS</div>
             <div class="product-subtitle">the kings of the city</div>
             <div class="click-hint">Haz clic para ver detalles</div>
-            
             <div class="product-details" onclick="event.stopPropagation()">
                 <div class="price">S/. 50</div>
                 <div class="size">Talla: T/U (Talla Única)</div>
                 <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20Total%20Black%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
+            </div>
+        </div>
+
+        <!-- 3. GORRA GRIS -->
+        <div class="card" onclick="this.classList.toggle('active')">
+            <img src="gorra-gris-miles.png" alt="Gorra MILESS Gris">
+            <div class="brand-name">MILESS</div>
+            <div class="product-subtitle">the kings of the city</div>
+            <div class="click-hint">Haz clic para ver detalles</div>
+            <div class="product-details" onclick="event.stopPropagation()">
+                <div class="price">S/. 50</div>
+                <div class="size">Talla: T/U (Talla Única)</div>
+                <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20Gris%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
+            </div>
+        </div>
+
+        <!-- 4. GORRA CLÁSICA (gorra-miles.png) -->
+        <div class="card" onclick="this.classList.toggle('active')">
+            <img src="gorra-miles.png" alt="Gorra MILESS Clásica">
+            <div class="brand-name">MILESS</div>
+            <div class="product-subtitle">the kings of the city</div>
+            <div class="click-hint">Haz clic para ver detalles</div>
+            <div class="product-details" onclick="event.stopPropagation()">
+                <div class="price">S/. 50</div>
+                <div class="size">Talla: T/U (Talla Única)</div>
+                <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20clasica%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
+            </div>
+        </div>
+
+        <!-- 5. GORRA MARRÓN -->
+        <div class="card" onclick="this.classList.toggle('active')">
+            <img src="gorra-marron-miles.png" alt="Gorra MILESS Marrón">
+            <div class="brand-name">MILESS</div>
+            <div class="product-subtitle">the kings of the city</div>
+            <div class="click-hint">Haz clic para ver detalles</div>
+            <div class="product-details" onclick="event.stopPropagation()">
+                <div class="price">S/. 50</div>
+                <div class="size">Talla: T/U (Talla Única)</div>
+                <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20Marron%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
             </div>
         </div>
 
