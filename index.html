@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -118,13 +119,20 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        /* ESTRICTO: Control de tamaño igual para todas las imágenes de las gorras */
+        /* Tamaño general para las imágenes de las gorras */
         .card img {
             width: 100%;
             height: 230px;
             object-fit: cover;
             border-radius: 8px;
             background-color: #f9f9f9;
+        }
+
+        /* Ajuste exclusivo para que la gorra marrón encaje perfecto en tamaño */
+        .card img[src="gorra-marron-miles.png"] {
+            object-fit: contain;
+            padding: 10px;
+            background-color: #fff;
         }
 
         /* Títulos de la gorra */
@@ -269,7 +277,7 @@
             </div>
         </div>
 
-        <!-- 4. GORRA CLÁSICA (gorra-miles.png) -->
+        <!-- 4. GORRA CLÁSICA -->
         <div class="card" onclick="this.classList.toggle('active')">
             <img src="gorra-miles.png" alt="Gorra MILESS Clásica">
             <div class="brand-name">MILESS</div>
