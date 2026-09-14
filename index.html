@@ -89,24 +89,26 @@
             cursor: pointer;
         }
 
-        /* Sección de Productos */
+        /* Sección de Productos - Organizada en filas de 4 */
         .products {
-            padding: 60px 40px;
+            padding: 60px 20px;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
             flex-wrap: wrap;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
-        /* Cuadro flotante de la gorra */
+        /* Cuadro flotante de la gorra (Calculado para exactamente 4 por fila) */
         .card {
             background: #fff;
             border: 1px solid #eaeaea;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            width: 300px;
+            width: calc(25% - 30px);
+            min-width: 260px;
+            max-width: 300px;
             padding: 20px;
             text-align: center;
             cursor: pointer;
@@ -125,6 +127,14 @@
             object-fit: cover;
             border-radius: 8px;
             background-color: #f9f9f9;
+        }
+
+        /* Ajuste preciso para reducir la gorra marrón y alinearla con el resto */
+        .card img[src="gorra-marron-miles.png"] {
+            object-fit: contain;
+            object-position: center;
+            transform: scale(0.92);
+            margin: 10px 0;
         }
 
         /* Títulos de la gorra */
@@ -227,7 +237,7 @@
         </div>
     </section>
 
-    <!-- Sección de Productos (Todas las Gorras) -->
+    <!-- Sección de Productos (Filas de 4) -->
     <section class="products">
         
         <!-- 1. GORRA NEGRA CON BLANCO -->
@@ -282,7 +292,7 @@
             </div>
         </div>
 
-        <!-- 5. GORRA MARRÓN (Tamaño Normal) -->
+        <!-- 5. GORRA MARRÓN (Achicada y centrada) -->
         <div class="card" onclick="this.classList.toggle('active')">
             <img src="gorra-marron-miles.png" alt="Gorra MILESS Marrón">
             <div class="brand-name">MILESS</div>
