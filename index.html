@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MILESS | Streetwear</title>
     <style>
-        /* Estilos Base - Estética Streetwear */
+        /* Estilos Base - Estética Streetwear Oscura */
         * {
             margin: 0;
             padding: 0;
@@ -14,8 +14,8 @@
         }
 
         body {
-            background-color: #ffffff;
-            color: #000000;
+            background-color: #000000; /* Fondo negro de la página */
+            color: #ffffff;
             overflow-x: hidden;
             letter-spacing: 1px;
         }
@@ -26,14 +26,15 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            border-bottom: 1px solid #eaeaea;
-            background-color: #ffffff;
+            border-bottom: 1px solid #222222;
+            background-color: #000000;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
             letter-spacing: 3px;
+            color: #ffffff;
         }
 
         .nav-links {
@@ -43,7 +44,7 @@
         }
 
         .nav-links a {
-            color: #000000;
+            color: #ffffff;
             text-decoration: none;
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -60,7 +61,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffffff;
+            background-color: #000000;
             padding: 20px;
         }
 
@@ -82,6 +83,7 @@
             height: auto;
             display: block;
             animation: spin3D 8s linear infinite;
+            filter: invert(1); /* Invierte el logo negro a blanco para que resalte en el fondo negro */
         }
 
         .logo-3d-rotate:hover {
@@ -100,12 +102,12 @@
             margin: 0 auto;
         }
 
-        /* Cuadro flotante del producto (Calculado para exactamente 4 por fila) */
+        /* Cuadro flotante del producto (Blanco para que resalte) */
         .card {
-            background: #fff;
+            background: #ffffff;
             border: 1px solid #eaeaea;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 25px rgba(255,255,255,0.05);
             width: calc(25% - 30px);
             min-width: 260px;
             max-width: 300px;
@@ -114,11 +116,12 @@
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 20px;
+            color: #000000; /* Texto interno de la tarjeta en negro */
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(255,255,255,0.15);
         }
 
         /* Tamaño general para las imágenes de los productos */
@@ -209,11 +212,12 @@
         footer {
             padding: 40px;
             text-align: center;
-            border-top: 1px solid #eaeaea;
-            color: #444444;
+            border-top: 1px solid #222222;
+            color: #888888;
             font-size: 0.8rem;
             text-transform: uppercase;
             margin-top: 40px;
+            background-color: #000000;
         }
     </style>
 </head>
@@ -326,7 +330,6 @@
         <div class="card" onclick="this.classList.toggle('active')">
             <img src="gorra-total black.png" alt="Gorra MILESS Total Black">
             <div class="brand-name">MILESS</div>
-           <div class="product-subtitle">the kings of the city</div>
             <div class="click-hint">Haz clic para ver detalles</div>
             <div class="product-details" onclick="event.stopPropagation()">
                 <div class="price">S/. 50</div>
