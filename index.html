@@ -94,6 +94,8 @@
             padding: 60px 40px;
             display: flex;
             justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
         }
 
         /* Cuadro flotante de la gorra */
@@ -218,8 +220,10 @@
         </div>
     </section>
 
-    <!-- Sección de Productos (Gorra) -->
+    <!-- Sección de Productos (Gorras) -->
     <section class="products">
+        
+        <!-- PRIMERA GORRA -->
         <div class="card" onclick="this.classList.toggle('active')">
             <img src="gorra-negra-miles.png" alt="Gorra MILESS Negra">
             
@@ -233,6 +237,22 @@
                 <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20negra%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
             </div>
         </div>
+
+        <!-- SEGUNDA GORRA (Total Black) -->
+        <div class="card" onclick="this.classList.toggle('active')">
+            <img src="gorra-total black.png" alt="Gorra MILESS Total Black">
+            
+            <div class="brand-name">MILESS</div>
+            <div class="product-subtitle">the kings of the city</div>
+            <div class="click-hint">Haz clic para ver detalles</div>
+            
+            <div class="product-details" onclick="event.stopPropagation()">
+                <div class="price">S/. 50</div>
+                <div class="size">Talla: T/U (Talla Única)</div>
+                <a href="https://wa.me/51949776995?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20Total%20Black%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
+            </div>
+        </div>
+
     </section>
 
     <!-- Footer -->
