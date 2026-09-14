@@ -324,34 +324,6 @@ header {
         </div>
     </div>
 
-<!-- TARJETA DE PRODUCTO MILES (Estructura idéntica a Prenda 4) -->
-<div class="tarjeta-de-producto" style="background: #111; padding: 20px; border: 1px solid #222; border-radius: 8px; color: #fff; position: relative; box-sizing: border-box; font-family: 'Arial Black', Gadget, sans-serif;">
-    <div style="display: flex; flex-direction: column; gap: 20px;">
-
-        <!-- CONTENEDOR DEL SLIDER (Al hacer clic abre el modal idéntico) -->
-        <div class="contenedor-slider-prenda" id="slider-metal-p5" style="background: #ffffff; border-radius: 4px; position: relative; min-height: 350px; display: flex; overflow: hidden; justify-content: center; align-items: center;">
-            
-            <!-- Zona de clic para abrir el cuadro flotante -->
-            <div onclick="abrirModalTallasP5()" style="display: flex; width: 100%; height: 100%; cursor: pointer;">
-                <div class="wrapper-imagenes" id="wrapper-p5" style="display: flex; width: 100%; transition: transform 0.3s ease-in-out;">
-                    <!-- Vista Frente -->
-                    <div style="min-width: 100%; display: flex; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box;">
-                        <img src="polo-metal-frente.png" alt="Polo Metal Frente" style="width: 100%; max-width: 320px; object-fit: contain; pointer-events: none;">
-                    </div>
-                    <!-- Vista Espalda -->
-                    <div style="min-width: 100%; display: flex; justify-content: center; align-items: center; padding: 10px; box-sizing: border-box;">
-                        <img src="polo-metal-espalda.png" alt="Polo Metal Espalda" style="width: 100%; max-width: 320px; object-fit: contain; pointer-events: none;">
-                    </div>
-                </div>
-            </div>
-            
-            <!-- PUNTOS DE NAVEGACIÓN -->
-            <div style="position: absolute; bottom: 15px; display: flex; gap: 8px; z-index: 10; left: 50%; transform: translateX(-50%);">
-                <span onclick="event.stopPropagation(); moverSliderMetal(0)" class="punto-m5" style="width: 10px; height: 10px; border-radius: 50%; background: #000; cursor: pointer; opacity: 1;"></span>
-                <span onclick="event.stopPropagation(); moverSliderMetal(1)" class="punto-m5" style="width: 10px; height: 10px; border-radius: 50%; background: #000; cursor: pointer; opacity: 0.4;"></span>
-            </div>
-
-        </div>
 
     </div>
 </div>
