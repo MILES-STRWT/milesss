@@ -14,7 +14,7 @@
         }
 
         body {
-            background-color: #000000; /* Fondo negro de la página */
+            background-color: #000000;
             color: #ffffff;
             overflow-x: hidden;
             letter-spacing: 1px;
@@ -83,7 +83,7 @@
             height: auto;
             display: block;
             animation: spin3D 8s linear infinite;
-            filter: invert(1); /* Invierte el logo negro a blanco para que resalte en el fondo negro */
+            filter: invert(1);
         }
 
         .logo-3d-rotate:hover {
@@ -91,7 +91,7 @@
             cursor: pointer;
         }
 
-        /* Sección de Productos - Organizada en filas de 4 */
+        /* Sección de Productos */
         .products {
             padding: 60px 20px;
             display: flex;
@@ -102,7 +102,7 @@
             margin: 0 auto;
         }
 
-        /* Cuadro flotante del producto (Blanco para que resalte) */
+        /* Cuadro flotante del producto */
         .card {
             background: #ffffff;
             border: 1px solid #eaeaea;
@@ -116,22 +116,38 @@
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 20px;
-            color: #000000; /* Texto interno de la tarjeta en negro */
+            color: #000000;
         }
 
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(255,255,255,0.15);
-/* Tamaño general para las imágenes de los productos */
+        }
+
+        /* ESTILO GENERAL PARA LOS POLOS (tal como los tenías al inicio, limpios y a su medida) */
         .card img {
             width: 100%;
-            height: 240px;
-            object-fit: cover; 
-            object-position: center;
+            height: 230px;
+            object-fit: cover;
             border-radius: 8px;
-            background-color: #000;
-            image-rendering: -webkit-optimize-contrast;
+            background-color: #f9f9f9;
         }
+
+        /* ESTILO EXCLUSIVO PARA LAS GORRAS (contain para que se vean completas y nítidas sin cortarse) */
+        .card img[src*="gorra-"] {
+            object-fit: contain !important;
+            object-position: center !important;
+            background-color: #f9f9f9 !important;
+            padding: 5px !important;
+        }
+
+        /* Ajuste específico para la gorra marrón */
+        .card img[src="gorra-marron-miles.png"] {
+            object-fit: contain !important;
+            object-position: center !important;
+            transform: scale(0.92);
+            margin: 10px 0;
+            padding: 0 !important;
         }
 
         /* Títulos del producto */
@@ -331,7 +347,7 @@
             </div>
         </div>
 
-        <!-- POLOS (6 en total: 3 negros y 3 blancos) -->
+        <!-- POLOS (6 en total - tamaño original) -->
         <div class="card" onclick="this.classList.toggle('active')">
             <img src="polo-negro-miles.png" alt="Polo MILESS Negro">
             <div class="brand-name">MILESS</div>
