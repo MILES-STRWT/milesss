@@ -123,17 +123,30 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(255,255,255,0.15);
         }
-
-      /* Tamaño general para las imágenes de los productos */
+/* Tamaño general para las imágenes de los productos (Gorras) */
         .card img {
             width: 100%;
-            height: 220px;
-            object-fit: contain; 
+            height: 230px;
+            object-fit: contain; /* Ideal para las gorras para que no se recorten */
             object-position: center;
             border-radius: 8px;
-            background-color: #f9f9f9;
-            padding: 5px;
-        } 
+            background-color: #111; /* Fondo oscuro sutil dentro de la tarjeta */
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        /* Ajuste específico exclusivo para los POLOS para que se vean grandes y llenen el cuadro */
+        .card img[src*="polo-"] {
+            object-fit: cover !important; /* Llena todo el espacio para que el polo resalte en grande */
+            object-position: center top !important; /* Enfoca la parte superior del polo donde está el diseño */
+        }
+
+        /* Ajuste preciso para reducir la gorra marrón y alinearla con el resto */
+        .card img[src="gorra-marron-miles.png"] {
+            object-fit: contain;
+            object-position: center;
+            transform: scale(0.92);
+            margin: 10px 0;
+        }
         }
 
         /* Títulos del producto */
