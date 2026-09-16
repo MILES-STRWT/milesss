@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -28,6 +29,9 @@
             padding: 20px 40px;
             border-bottom: 1px solid #222222;
             background-color: #000000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
@@ -35,6 +39,7 @@
             font-weight: 900;
             letter-spacing: 3px;
             color: #ffffff;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -147,7 +152,7 @@
             border-radius: 8px;
         }
 
-        /* AJUSTE ESPECÍFICO: Reduce ligeramente la gorra marrón para que encaje exacta con las demás */
+        /* Ajuste específico para la gorra marrón */
         .card img[src="gorra-marron-miles.png"] {
             width: 82% !important;
             height: 82% !important;
@@ -220,16 +225,48 @@
             background-color: #1ebe5d;
         }
 
-        /* Footer */
+        /* Footer / Contacto */
         footer {
-            padding: 40px;
+            padding: 50px 20px;
             text-align: center;
             border-top: 1px solid #222222;
             color: #888888;
-            font-size: 0.8rem;
-            text-transform: uppercase;
+            font-size: 0.9rem;
             margin-top: 40px;
             background-color: #000000;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .whatsapp-contact-btn {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 25px;
+            transition: background 0.2s;
+        }
+
+        .whatsapp-contact-btn:hover {
+            background-color: #1ebe5d;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #555;
         }
     </style>
 </head>
@@ -237,11 +274,10 @@
 
     <!-- Navegación -->
     <nav>
-        <div class="logo">MILESS</div>
+        <a href="#" class="logo">MILESS</a>
         <ul class="nav-links">
             <li><a href="#">Inicio</a></li>
-            <li><a href="#">Colección</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
     </nav>
 
@@ -255,7 +291,7 @@
     </section>
 
     <!-- Sección de Productos -->
-    <section class="products">
+    <section class="products" id="catalogo">
         
         <!-- GORRAS NUEVAS (Trébol) -->
         <div class="card" onclick="this.classList.toggle('active')">
@@ -476,9 +512,13 @@
 
     </section>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2026 MILESS. Todos los derechos reservados.
+    <!-- Footer / Contacto -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <p>¿Tienes dudas o consultas directas?</p>
+            <a href="https://wa.me/51966413339?text=Hola,%20vengo%20de%20la%20web%20de%20MILESS%20y%20quiero%20consultar%20algo." target="_blank" class="whatsapp-contact-btn">Escríbenos al WhatsApp</a>
+            <div class="copyright">&copy; 2026 MILESS. Todos los derechos reservados.</div>
+        </div>
     </footer>
 
 </body>
