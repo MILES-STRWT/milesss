@@ -22,12 +22,22 @@
             background: #111;
             border-bottom: 1px solid #222;
         }
-        header img {
-            max-width: 140px;
+        .logo-container {
+            perspective: 1000px;
+            display: inline-block;
             margin-bottom: 10px;
         }
+        header img.logo-3d {
+            max-width: 130px;
+            animation: rotate3d 6s infinite linear;
+            transform-style: preserve-3d;
+        }
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
         header h1 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             letter-spacing: 2px;
             color: #fff;
         }
@@ -71,7 +81,6 @@
             justify-content: center;
             overflow: hidden;
         }
-        /* Regla estricta separada para gorras y polos */
         .card.gorra .image-container img {
             width: 100%;
             height: 100%;
@@ -88,13 +97,38 @@
         }
         .info h3 {
             font-size: 1rem;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             color: #ddd;
         }
-        .info p {
-            font-size: 0.9rem;
+        .info .details {
+            font-size: 0.85rem;
             color: #aaa;
+            margin-bottom: 8px;
+        }
+        .info .price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
             margin-bottom: 12px;
+        }
+        .size-selector {
+            margin-bottom: 12px;
+        }
+        .size-selector label {
+            font-size: 0.8rem;
+            color: #888;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .size-selector select {
+            background: #222;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            width: 80px;
+            text-align: center;
         }
         .btn-wa {
             display: block;
@@ -117,7 +151,9 @@
 <body>
 
     <header>
-        <img src="logo-ms-negro.png" alt="MILESS Logo">
+        <div class="logo-container">
+            <img src="logo-ms-negro.png" class="logo-3d" alt="MILESS Logo">
+        </div>
         <h1>MILESS STREETWEAR</h1>
     </header>
 
@@ -125,7 +161,7 @@
         
         <!-- SECCIÓN GORRAS -->
         <section>
-            <h2>Gorras</h2>
+            <h2>| Gorras</h2>
             <div class="grid">
                 
                 <div class="card gorra">
@@ -134,8 +170,9 @@
                     </div>
                     <div class="info">
                         <h3>Gorra Miles</h3>
-                        <p>Trébol Negro</p>
-                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Trébol%20Negro" target="_blank">Pedir por WhatsApp</a>
+                        <p class="details">Trébol Negro • Talla Única</p>
+                        <div class="price">S/. 50.00</div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Trébol%20Negro%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
                     </div>
                 </div>
 
@@ -145,8 +182,9 @@
                     </div>
                     <div class="info">
                         <h3>Gorra Miles</h3>
-                        <p>Trébol Blanca</p>
-                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Trébol%20Blanca" target="_blank">Pedir por WhatsApp</a>
+                        <p class="details">Trébol Blanca • Talla Única</p>
+                        <div class="price">S/. 50.00</div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Trébol%20Blanca%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
                     </div>
                 </div>
 
@@ -156,8 +194,9 @@
                     </div>
                     <div class="info">
                         <h3>Gorra Miles</h3>
-                        <p>Clásica</p>
-                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Clásica" target="_blank">Pedir por WhatsApp</a>
+                        <p class="details">Clásica • Talla Única</p>
+                        <div class="price">S/. 50.00</div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Clásica%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
                     </div>
                 </div>
 
@@ -167,8 +206,9 @@
                     </div>
                     <div class="info">
                         <h3>Gorra Miles</h3>
-                        <p>Gris Edición</p>
-                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Gris" target="_blank">Pedir por WhatsApp</a>
+                        <p class="details">Gris Edición • Talla Única</p>
+                        <div class="price">S/. 50.00</div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Gris%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
                     </div>
                 </div>
 
@@ -178,8 +218,33 @@
                     </div>
                     <div class="info">
                         <h3>Gorra Miles</h3>
-                        <p>Marrón Earth</p>
-                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Marrón" target="_blank">Pedir por WhatsApp</a>
+                        <p class="details">Marrón Earth • Talla Única</p>
+                        <div class="price">S/. 50.00</div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Marrón%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="card gorra">
+                    <div class="image-container">
+                        <img src="gorra-negra-miles.png" alt="Gorra Miles Negra">
+                    </div>
+                    <div class="info">
+                        <h3>Gorra Miles</h3>
+                        <p class="details">Negra Básica • Talla Única</p>
+                        <div class="price">S/. 50.00</div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Negra%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="card gorra">
+                    <div class="image-container">
+                        <img src="gorra-total-black.png" alt="Gorra Miles Total Black">
+                    </div>
+                    <div class="info">
+                        <h3>Gorra Miles</h3>
+                        <p class="details">Total Black • Talla Única</p>
+                        <div class="price">S/. 50.00</div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20la%20Gorra%20Miles%20Total%20Black%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
                     </div>
                 </div>
 
@@ -188,7 +253,7 @@
 
         <!-- SECCIÓN POLOS -->
         <section>
-            <h2>Polos</h2>
+            <h2>| Polos</h2>
             <div class="grid">
                 
                 <div class="card polo">
@@ -197,8 +262,18 @@
                     </div>
                     <div class="info">
                         <h3>Polos Miles</h3>
-                        <p>Oversized Blanco</p>
-                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20los%20Polos%20Miles%20Blanco" target="_blank">Pedir por WhatsApp</a>
+                        <p class="details">Oversized Blanco</p>
+                        <div class="price">S/. 50.00</div>
+                        <div class="size-selector">
+                            <label for="talla-polo1">Talla:</label>
+                            <select id="talla-polo1">
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L" selected>L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                        </div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20los%20Polos%20Miles%20Blanco%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
                     </div>
                 </div>
 
@@ -208,8 +283,18 @@
                     </div>
                     <div class="info">
                         <h3>Polos Miles</h3>
-                        <p>Graphic Edition</p>
-                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20los%20Polos%20Miles%20Graphic" target="_blank">Pedir por WhatsApp</a>
+                        <p class="details">Graphic Edition</p>
+                        <div class="price">S/. 50.00</div>
+                        <div class="size-selector">
+                            <label for="talla-polo2">Talla:</label>
+                            <select id="talla-polo2">
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L" selected>L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                        </div>
+                        <a class="btn-wa" href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20los%20Polos%20Miles%20Graphic%20(S/.50)" target="_blank">Pedir por WhatsApp</a>
                     </div>
                 </div>
 
