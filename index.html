@@ -124,7 +124,7 @@
             box-shadow: 0 15px 30px rgba(255,255,255,0.15);
         }
 
-        /* Contenedor uniforme para las imágenes y evitar recuadros raros */
+        /* Contenedor uniforme para las imágenes */
         .card-img-container {
             width: 100%;
             height: 210px;
@@ -143,8 +143,14 @@
             object-fit: contain;
             object-position: center;
             background-color: #ffffff;
-            padding: 5px;
+            padding: 8px;
             border-radius: 8px;
+        }
+
+        /* AJUSTE ESPECÍFICO: Reduce ligeramente la gorra marrón para que encaje exacta con las demás */
+        .card img[src="gorra-marron-miles.png"] {
+            width: 82% !important;
+            height: 82% !important;
         }
 
         /* Títulos del producto */
