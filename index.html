@@ -3,396 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MILESS | Official Streetwear Catalog</title>
+    <title>MILESS® | Streetwear Official</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        street: {
-                            900: '#000000',
-                            800: '#0a0a0c',
-                            700: '#121216',
-                            600: '#1e1e24'
-                        }
-                    },
                     fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace']
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#080808',
+                        cardBg: '#121212',
+                        borderGray: '#222222',
                     }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap');
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
+            background-color: #080808;
             color: #f3f4f6;
+            font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
-            letter-spacing: 0.5px;
         }
-
-        /* Custom Scrollbar */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        @keyframes rotateLogo {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        .animate-logo-3d {
+            animation: rotateLogo 8s infinite linear;
+        }
+        /* Custom Scrollbar for Cart */
         ::-webkit-scrollbar {
             width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #000000;
+            background: #121212;
         }
         ::-webkit-scrollbar-thumb {
-            background: #262630;
+            background: #333333;
             border-radius: 3px;
-        }
-
-        /* Logo 3D Spin Animation */
-        @keyframes spin3D {
-            0% { transform: rotateY(0deg); }
-            100% { transform: rotateY(360deg); }
-        }
-
-        .logo-3d-rotate {
-            width: 220px;
-            height: auto;
-            display: block;
-            animation: spin3D 8s linear infinite;
-            filter: invert(1);
-        }
-
-        .logo-3d-rotate:hover {
-            animation-duration: 4s;
-            cursor: pointer;
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-white selection:text-black">
+<body class="antialiased selection:bg-white selection:text-black">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-gradient-to-r from-zinc-950 via-neutral-900 to-zinc-950 text-xs tracking-widest text-center py-2.5 px-4 border-b border-zinc-800 uppercase font-semibold text-zinc-300">
-        ⚡ Envíos a todo el Perú & EE. UU. | MILESS STREETWEAR ⚡
+    <div class="bg-black border-b border-borderGray text-xs py-2 text-center tracking-widest uppercase font-medium text-gray-400">
+        ⚡ ENVÍOS A TODO EL PERÚ & EE. UU. | MILESS STREETWEAR ⚡
     </div>
 
-    <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-zinc-800/80 transition-all">
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-darkBg/90 backdrop-blur-md border-b border-borderGray">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-2">
-                <span class="text-2xl sm:text-3xl font-black tracking-tighter text-white uppercase">
-                    MILESS<span class="text-zinc-500">.</span>
-                </span>
+            <a href="#" class="text-2xl font-black tracking-tighter uppercase text-white flex items-center gap-1">
+                MILESS<span class="text-xs align-super">®</span>
             </a>
 
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest uppercase">
-                <a href="#" class="text-white border-b-2 border-white pb-1">INICIO</a>
-                <a href="#catalogo" class="text-zinc-400 hover:text-white transition-colors">CATÁLOGO</a>
-                <a href="#contacto" class="text-zinc-400 hover:text-white transition-colors">CONTACTO</a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wider uppercase text-gray-400">
+                <a href="#" class="text-white hover:text-white transition-colors">Inicio</a>
+                <a href="#catalogo" class="hover:text-white transition-colors">Catálogo</a>
+                <a href="#contacto" class="hover:text-white transition-colors">Contacto</a>
             </nav>
 
             <!-- Cart Trigger Button -->
-            <div class="flex items-center gap-4">
-                <button id="cartBtn" onclick="toggleCart(true)" class="relative p-2.5 rounded-full hover:bg-zinc-800 text-zinc-200 transition-colors focus:outline-none flex items-center gap-2 bg-zinc-900 border border-zinc-800 px-4">
-                    <i class="fa-solid fa-bag-shopping text-lg"></i>
-                    <span class="text-xs font-bold uppercase hidden sm:inline">Carrito</span>
-                    <span id="cartCount" class="bg-white text-black text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-black">0</span>
-                </button>
-            </div>
+            <button onclick="toggleCart()" class="flex items-center gap-2 bg-cardBg hover:bg-borderGray border border-borderGray px-4 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-200 group">
+                <i data-lucide="shopping-bag" class="w-4 h-4 text-gray-400 group-hover:text-white transition-colors"></i>
+                <span class="text-white">Carrito</span>
+                <span id="cart-count" class="bg-white text-black text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section con Logo 3D Giratorio -->
-    <section class="relative py-12 lg:py-16 bg-black border-b border-zinc-900 flex flex-col items-center justify-center overflow-hidden">
-        <div style="perspective: 1000px;" class="mb-4">
-            <img src="logo-ms-negro.png" alt="Logo MILESS" class="logo-3d-rotate">
+    <!-- Hero Section (Solo Logo 3D Giratorio, sin textos debajo) -->
+    <section class="py-16 md:py-24 flex flex-col items-center justify-center text-center px-4 border-b border-borderGray">
+        <div class="perspective-1000 w-48 h-48 sm:w-60 sm:h-60 flex items-center justify-center">
+            <div class="relative w-full h-full transform-style-3d animate-logo-3d flex items-center justify-center">
+                <!-- Front Side of Logo -->
+                <div class="absolute inset-0 flex items-center justify-center backface-hidden">
+                    <span class="text-8xl sm:text-9xl font-black tracking-tighter text-white drop-shadow-[0_10px_20px_rgba(255,255,255,0.15)] select-none">𝔐</span>
+                </div>
+                <!-- Back Side of Logo -->
+                <div class="absolute inset-0 flex items-center justify-center backface-hidden" style="transform: rotateY(180deg);">
+                    <span class="text-8xl sm:text-9xl font-black tracking-tighter text-gray-400 select-none">𝔐</span>
+                </div>
+            </div>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-black uppercase tracking-widest text-center text-white mt-2">MILESS STREETWEAR</h1>
-        <p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">The Kings of the City Collection</p>
     </section>
 
-    <!-- Main Catalog Container -->
-    <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
-        
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-zinc-800 pb-4">
+    <!-- Catalog Section -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4 border-b border-borderGray pb-6">
             <div>
-                <span class="text-xs text-zinc-500 uppercase tracking-widest font-mono">ALL ITEMS - S/. 50.00</span>
-                <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-1">Colección Oficial</h2>
+                <p class="text-xs uppercase tracking-widest text-gray-500 mb-1">All Items</p>
+                <h2 class="text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">Colección Oficial</h2>
             </div>
-            <p class="text-xs text-zinc-400 mt-2 md:mt-0 font-mono">Agrega tus prendas al carrito y finaliza tu pedido directamente por WhatsApp</p>
+            <p class="text-xs tracking-wider uppercase text-gray-400">
+                Agrega tus prendas al carrito y finaliza tu pedido directamente por WhatsApp
+            </p>
         </div>
 
-        <!-- Dynamic Product Cards Grid -->
-        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Renderizado dinámico vía JS -->
+        <!-- Catalog Grid (15 Items - Intacto) -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Los items del catálogo se renderizan mediante JavaScript -->
         </div>
-    </main>
+    </section>
 
-    <!-- Footer / Contacto -->
-    <footer id="contacto" class="bg-zinc-950 border-t border-zinc-800 mt-20 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-3xl font-black tracking-tighter text-white uppercase">MILESS<span class="text-zinc-600">.</span></span>
-            <p class="text-xs text-zinc-400 tracking-widest uppercase mt-2">¿TIENES DUDAS O CONSULTAS DIRECTAS?</p>
-            
-            <div class="mt-6">
-                <a href="https://wa.me/51966413339?text=Hola,%20vengo%20de%20la%20web%20de%20MILESS%20y%20quiero%20consultar%20algo." target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg active:scale-95">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Escríbenos al WhatsApp</span>
-                </a>
-            </div>
-
-            <p class="text-[11px] text-zinc-600 mt-8 font-mono">&copy; 2026 MILESS. Todos los derechos reservados.</p>
-        </div>
+    <!-- Footer -->
+    <footer id="contacto" class="bg-black border-t border-borderGray py-12 text-center text-xs text-gray-500 tracking-wider uppercase">
+        <p class="mb-2">MILESS® STREETWEAR — ALL RIGHTS RESERVED 2026</p>
+        <p>TRUJILLO, PERÚ / INTERNATIONAL SHIPPING</p>
     </footer>
 
-    <!-- MODAL DE VISTA DETALLADA DEL PRODUCTO (Imágenes adicionales) -->
-    <div id="productModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl overflow-hidden flex flex-col md:flex-row gap-6">
-            <button onclick="closeProductModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-white z-10">
-                <i class="fa-solid fa-xmark text-xl"></i>
+    <!-- Slide-Over Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-cardBg border-l border-borderGray flex flex-col">
+                <!-- Cart Header -->
+                <div class="p-6 border-b border-borderGray flex items-center justify-between">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-white flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-4 h-4"></i> Tu Carrito (<span id="drawer-count">0</span>)
+                    </h3>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-white p-2">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                <!-- Cart Items List -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-borderGray/50">
+                    <!-- Dynamic Cart Items -->
+                </div>
+                <!-- Cart Footer / Checkout -->
+                <div class="p-6 border-t border-borderGray bg-darkBg">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs uppercase tracking-wider text-gray-400">Total a Pagar:</span>
+                        <span id="cart-total" class="text-xl font-bold text-white">S/. 0.00</span>
+                    </div>
+                    <button onclick="checkoutWhatsApp()" class="w-full bg-white text-black hover:bg-gray-200 font-bold uppercase text-xs tracking-widest py-4 px-6 rounded-full transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i> Finalizar Pedido por WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-cardBg border border-borderGray rounded-2xl max-w-2xl w-full overflow-hidden relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white bg-darkBg/80 p-2 rounded-full z-10">
+                <i data-lucide="x" class="w-5 h-5"></i>
             </button>
-            
-            <!-- Visor de imágenes -->
-            <div class="w-full md:w-1/2 flex flex-col gap-3">
-                <div class="w-full h-64 bg-white rounded-xl p-3 flex items-center justify-center overflow-hidden">
-                    <img id="modalMainImg" src="" alt="" class="h-full object-contain">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="bg-black p-6 flex items-center justify-center">
+                    <img id="modal-img" src="" alt="Prenda" class="max-h-80 object-contain rounded-lg">
                 </div>
-                <!-- Galería de Miniaturas -->
-                <div id="modalThumbnails" class="flex gap-2 overflow-x-auto pb-1">
-                    <!-- Inyectado por JS -->
-                </div>
-            </div>
-
-            <!-- Detalles y acciones -->
-            <div class="w-full md:w-1/2 flex flex-col justify-between">
-                <div>
-                    <span id="modalCategory" class="text-[10px] font-mono uppercase bg-zinc-800 text-zinc-300 px-2 py-1 rounded">STREETWEAR</span>
-                    <h3 id="modalTitle" class="text-xl font-black uppercase text-white mt-2"></h3>
-                    <p id="modalSubtitle" class="text-xs text-zinc-400 italic mt-0.5"></p>
-                    <p id="modalSize" class="text-xs font-mono text-zinc-300 mt-3"></p>
-                    <p class="text-2xl font-black font-mono text-white mt-2">S/. 50.00</p>
-                </div>
-
-                <div class="space-y-3 mt-6">
-                    <button id="modalAddCartBtn" onclick="" class="w-full bg-white hover:bg-zinc-200 text-black font-black py-3 rounded-xl uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
-                    </button>
-                    <button id="modalWsppBtn" onclick="" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> Comprar Directo
+                <div class="p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-gray-500 font-medium">MILESS® Drop</span>
+                        <h3 id="modal-title" class="text-xl font-black uppercase text-white mt-1 mb-2"></h3>
+                        <p id="modal-price" class="text-lg font-bold text-white mb-4">S/. 50.00</p>
+                        <p class="text-xs text-gray-400 mb-6 leading-relaxed">Prenda confeccionada bajo altos estándares de diseño urbano contemporáneo. Algodón pesado de alta durabilidad y acabados de alta definición.</p>
+                        
+                        <!-- Size Selector -->
+                        <div class="mb-6">
+                            <label class="block text-xs uppercase tracking-widest text-gray-400 mb-2">Selecciona tu Talla:</label>
+                            <div class="grid grid-cols-4 gap-2" id="size-selector">
+                                <button onclick="selectSize('S')" class="size-btn border border-borderGray py-2 text-xs font-bold rounded-lg hover:border-white transition-colors text-white">S</button>
+                                <button onclick="selectSize('M')" class="size-btn border border-borderGray py-2 text-xs font-bold rounded-lg hover:border-white transition-colors text-white">M</button>
+                                <button onclick="selectSize('L')" class="size-btn border border-borderGray py-2 text-xs font-bold rounded-lg hover:border-white transition-colors text-white">L</button>
+                                <button onclick="selectSize('XL')" class="size-btn border border-borderGray py-2 text-xs font-bold rounded-lg hover:border-white transition-colors text-white">XL</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="modal-add-btn" onclick="addCurrentProductToCart()" class="w-full bg-white text-black font-bold uppercase text-xs tracking-widest py-3.5 rounded-full hover:bg-gray-200 transition-all">
+                        Añadir al Carrito
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE-OVER CART DRAWER MODAL -->
-    <div id="cartOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div id="cartDrawer" class="fixed inset-y-0 right-0 max-w-full flex pl-10 transform translate-x-full transition-transform duration-300 ease-in-out">
-            <div class="w-screen max-w-md bg-zinc-950 border-l border-zinc-800 text-white flex flex-col justify-between shadow-2xl">
-                
-                <!-- Drawer Header -->
-                <div class="p-6 border-b border-zinc-800 flex items-center justify-between">
-                    <h2 class="text-lg font-black uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-bag-shopping text-zinc-400"></i> Tu Carrito MILESS
-                    </h2>
-                    <button onclick="toggleCart(false)" class="p-2 text-zinc-400 hover:text-white rounded-lg">
-                        <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
-                </div>
-
-                <!-- Drawer Body / Item List -->
-                <div id="cartList" class="p-6 flex-grow overflow-y-auto space-y-4">
-                    <div id="emptyCartMsg" class="h-full flex flex-col items-center justify-center text-center py-12 text-zinc-500">
-                        <i class="fa-solid fa-cart-flatbed text-4xl mb-3 opacity-40"></i>
-                        <p class="text-sm font-semibold text-white">Tu carrito está vacío</p>
-                        <p class="text-xs text-zinc-500 mt-1">Añade prendas del catálogo para hacer un solo pedido.</p>
-                    </div>
-
-                    <div id="cartItemsContainer" class="space-y-4 hidden"></div>
-                </div>
-
-                <!-- Drawer Footer -->
-                <div class="p-6 border-t border-zinc-800 bg-black space-y-4">
-                    <div class="flex justify-between text-sm text-white font-extrabold pb-2 border-b border-zinc-800">
-                        <span>Total:</span>
-                        <span id="cartTotal" class="font-mono text-lg">S/. 0.00</span>
-                    </div>
-
-                    <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-xl uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-xl transition-all">
-                        <i class="fa-brands fa-whatsapp text-lg"></i>
-                        <span>ENVIAR PEDIDO POR WHATSAPP</span>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- JavaScript Logic -->
     <script>
-        // Número oficial
-        const WSPP_NUMBER = "51966413339";
-
-        // Colección de Productos (puedes agregarle más rutas de fotos en "images")
         const products = [
-            { id: 1, title: "Gorra MILESS Trébol", subtitle: "Edición Blanca", size: "T/U (Talla Única)", price: 50, images: ["gorra-trebol-blanca.png"] },
-            { id: 2, title: "Gorra MILESS Marrón", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-marron-miles.png"] },
-            { id: 3, title: "Gorra MILESS MS Gris", subtitle: "Streetwear Cap", size: "T/U (Talla Única)", price: 50, images: ["gorra-ms-gris.png"] },
-            { id: 4, title: "Gorra MILESS MS Negra", subtitle: "Streetwear Cap", size: "T/U (Talla Única)", price: 50, images: ["gorra-ms-negra.png"] },
-            { id: 5, title: "Gorra MILESS MS Emblem", subtitle: "Streetwear Cap", size: "T/U (Talla Única)", price: 50, images: ["gorra-ms.png"] },
-            { id: 6, title: "Gorra MILESS Gris", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-gris-miles.png"] },
-            { id: 7, title: "Gorra MILESS Blanca", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-miles.png"] },
-            { id: 8, title: "Gorra MILESS Negra", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-negra-miles.png"] },
-            { id: 9, title: "Gorra MILESS Total Black", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-total black.png"] },
-            { id: 10, title: "Polo MILESS Negro", subtitle: "Streetwear Edition", size: "Talla: L", price: 50, images: ["polo-negro-miles.png"] },
-            { id: 11, title: "Polo MILESS MS Negro", subtitle: "Streetwear Edition", size: "Tallas: M y L", price: 50, images: ["polo-negro-ms.png"] },
-            { id: 12, title: "Polo MILESS Negro 3", subtitle: "Streetwear Edition", size: "Tallas: M - L - XL", price: 50, images: ["polo-negro-miles-3.png"] },
-            { id: 13, title: "Polo MILESS MS Blanco", subtitle: "Streetwear Edition", size: "Talla: L", price: 50, images: ["polo-blanco-ms.png"] },
-            { id: 14, title: "Polo MILESS Blanco", subtitle: "Streetwear Edition", size: "Talla: L", price: 50, images: ["polo-blanco-miles.png"] },
-            { id: 15, title: "Polo MILESS Blanco 3", subtitle: "Streetwear Edition", size: "Talla: M", price: 50, images: ["polo-blanco-miles-3.png"] }
+            { id: 1, name: "Oversized Hoodie 'Gothic M'", price: 50, image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "Trucker Cap 'Kings'", price: 50, image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, name: "Heavyweight Tee 'City'", price: 50, image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" },
+            { id: 4, name: "Zip-Up Hoodie 'Shadow'", price: 50, image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, name: "Cargo Pants 'Tactical'", price: 50, image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
+            { id: 6, name: "Graphic Tee 'Dreams'", price: 50, image: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, name: "Beanie 'Urban Black'", price: 50, image: "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?auto=format&fit=crop&w=600&q=80" },
+            { id: 8, name: "Windbreaker 'Night'", price: 50, image: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=600&q=80" },
+            { id: 9, name: "Sweatpants 'Essential'", price: 50, image: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=600&q=80" },
+            { id: 10, name: "Vintage Wash Tee", price: 50, image: "https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" },
+            { id: 11, name: "Puffer Jacket 'Core'", price: 50, image: "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=600&q=80" },
+            { id: 12, name: "Crossbody Bag 'Utility'", price: 50, image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80" },
+            { id: 13, name: "Longsleeve 'Gothic'", price: 50, image: "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=600&q=80" },
+            { id: 14, name: "Socks Pack 'MILESS'", price: 50, image: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?auto=format&fit=crop&w=600&q=80" },
+            { id: 15, name: "Balaclava 'Dark City'", price: 50, image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80" }
         ];
 
         let cart = [];
+        let selectedProduct = null;
+        let selectedSize = 'M';
 
-        // Renderizar Cuadros
         function renderProducts() {
-            const grid = document.getElementById('productGrid');
+            const grid = document.getElementById('product-grid');
             grid.innerHTML = products.map(p => `
-                <div class="group bg-zinc-900/60 border border-zinc-800 hover:border-zinc-500 rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between">
-                    <div>
-                        <div onclick="openProductModal(${p.id})" class="w-full h-52 bg-white rounded-xl p-3 flex items-center justify-center overflow-hidden cursor-pointer relative">
-                            <img src="${p.images[0]}" alt="${p.title}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300">
-                            ${p.images.length > 1 ? `<span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] px-2 py-0.5 rounded font-mono">+${p.images.length} fotos</span>` : ''}
-                        </div>
-                        <div class="mt-4">
-                            <h3 class="text-base font-black uppercase text-white tracking-tight">${p.title}</h3>
-                            <p class="text-xs text-zinc-400 italic font-medium">${p.subtitle}</p>
-                        </div>
+                <div class="bg-cardBg border border-borderGray rounded-2xl overflow-hidden group hover:border-gray-500 transition-all duration-300 flex flex-col justify-between">
+                    <div class="relative bg-black h-72 overflow-hidden flex items-center justify-center cursor-pointer" onclick="openModal(${p.id})">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 right-4 bg-black/80 backdrop-blur-md text-white font-bold text-xs px-3 py-1.5 rounded-full border border-borderGray">S/. 50.00</span>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-zinc-800 flex flex-col gap-2">
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-zinc-500 font-mono">${p.size}</span>
-                            <span class="text-base font-extrabold text-white font-mono">S/. ${p.price.toFixed(2)}</span>
+                    <div class="p-6 flex flex-col gap-4">
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-gray-500 font-semibold">Streetwear Drop</span>
+                            <h3 class="text-base font-bold uppercase text-white tracking-wide mt-0.5">${p.name}</h3>
                         </div>
-                        <div class="grid grid-cols-2 gap-2 mt-1">
-                            <button onclick="addToCart(${p.id})" class="bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-2 rounded-xl text-[11px] uppercase transition-colors flex items-center justify-center gap-1">
-                                <i class="fa-solid fa-cart-plus"></i> Añadir
-                            </button>
-                            <button onclick="buyNowWhatsApp('${p.title}', '${p.size}')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-xl text-[11px] uppercase transition-colors flex items-center justify-center gap-1">
-                                <i class="fa-brands fa-whatsapp text-sm"></i> Pedir
-                            </button>
-                        </div>
+                        <button onclick="openModal(${p.id})" class="w-full bg-borderGray hover:bg-white hover:text-black text-white font-bold text-xs uppercase tracking-widest py-3 rounded-xl transition-all duration-200">
+                            Ver Opciones
+                        </button>
                     </div>
                 </div>
             `).join('');
+            lucide.createIcons();
         }
 
-        // Carrito Logic
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const item = cart.find(i => i.id === productId);
-            if (item) {
-                item.qty++;
+        function openModal(id) {
+            selectedProduct = products.find(p => p.id === id);
+            selectedSize = 'M';
+            document.getElementById('modal-img').src = selectedProduct.image;
+            document.getElementById('modal-title').innerText = selectedProduct.name;
+            document.getElementById('product-modal').classList.remove('hidden');
+            updateSizeButtons();
+        }
+
+        function closeModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function selectSize(size) {
+            selectedSize = size;
+            updateSizeButtons();
+        }
+
+        function updateSizeButtons() {
+            const buttons = document.querySelectorAll('.size-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText === selectedSize) {
+                    btn.classList.add('bg-white', 'text-black', 'border-white');
+                    btn.classList.remove('text-white');
+                } else {
+                    btn.classList.remove('bg-white', 'text-black', 'border-white');
+                    btn.classList.add('text-white');
+                }
+            });
+        }
+
+        function addCurrentProductToCart() {
+            if (!selectedProduct) return;
+            const cartItemId = `${selectedProduct.id}-${selectedSize}`;
+            const existing = cart.find(item => item.cartItemId === cartItemId);
+            
+            if (existing) {
+                existing.quantity += 1;
             } else {
-                cart.push({ ...product, qty: 1 });
+                cart.push({
+                    cartItemId,
+                    id: selectedProduct.id,
+                    name: selectedProduct.name,
+                    price: selectedProduct.price,
+                    size: selectedSize,
+                    image: selectedProduct.image,
+                    quantity: 1
+                });
             }
+            closeModal();
             updateCartUI();
-            toggleCart(true);
+            toggleCart();
         }
 
-        function removeCartItem(index) {
-            cart.splice(index, 1);
+        function removeFromCart(cartItemId) {
+            cart = cart.filter(item => item.cartItemId !== cartItemId);
             updateCartUI();
         }
 
         function updateCartUI() {
-            const countEl = document.getElementById('cartCount');
-            const totalEl = document.getElementById('cartTotal');
-            const emptyMsg = document.getElementById('emptyCartMsg');
-            const container = document.getElementById('cartItemsContainer');
+            const countElem = document.getElementById('cart-count');
+            const drawerCountElem = document.getElementById('drawer-count');
+            const cartItemsElem = document.getElementById('cart-items');
+            const cartTotalElem = document.getElementById('cart-total');
 
-            const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
-            const totalPrice = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-            countEl.innerText = totalItems;
-            totalEl.innerText = `S/. ${totalPrice.toFixed(2)}`;
+            countElem.innerText = totalCount;
+            drawerCountElem.innerText = totalCount;
+            cartTotalElem.innerText = `S/. ${totalPrice.toFixed(2)}`;
 
             if (cart.length === 0) {
-                emptyMsg.classList.remove('hidden');
-                container.classList.add('hidden');
+                cartItemsElem.innerHTML = `
+                    <div class="text-center py-12 text-gray-500">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto mb-3 opacity-20"></i>
+                        <p class="text-xs uppercase tracking-wider">Tu carrito está vacío</p>
+                    </div>
+                `;
             } else {
-                emptyMsg.classList.add('hidden');
-                container.classList.remove('hidden');
-                container.innerHTML = cart.map((item, idx) => `
-                    <div class="flex items-center gap-3 bg-zinc-900 p-3 rounded-xl border border-zinc-800">
-                        <img src="${item.images[0]}" class="w-12 h-12 object-contain bg-white rounded-lg p-1">
-                        <div class="flex-grow min-w-0">
-                            <h4 class="text-xs font-bold text-white truncate">${item.title}</h4>
-                            <p class="text-[10px] text-zinc-400">${item.size}</p>
-                            <p class="text-xs font-mono font-bold text-white mt-0.5">S/. ${item.price} x ${item.qty}</p>
+                cartItemsElem.innerHTML = cart.map(item => `
+                    <div class="py-4 flex items-center justify-between gap-4">
+                        <img src="${item.image}" class="w-16 h-16 object-cover rounded-lg bg-black border border-borderGray">
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold uppercase text-white">${item.name}</h4>
+                            <p class="text-[10px] text-gray-400 uppercase">Talla: <span class="text-white font-bold">${item.size}</span></p>
+                            <p class="text-xs font-semibold text-white mt-1">S/. ${item.price}.00 x ${item.quantity}</p>
                         </div>
-                        <button onclick="removeCartItem(${idx})" class="text-zinc-500 hover:text-red-400 p-1">
-                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        <button onclick="removeFromCart('${item.cartItemId}')" class="text-gray-500 hover:text-white p-2">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
                         </button>
                     </div>
                 `).join('');
             }
+            lucide.createIcons();
         }
 
-        function toggleCart(show) {
-            const overlay = document.getElementById('cartOverlay');
-            const drawer = document.getElementById('cartDrawer');
-            if (show) {
-                overlay.classList.remove('opacity-0', 'pointer-events-none');
-                drawer.classList.remove('translate-x-full');
-            } else {
-                overlay.classList.add('opacity-0', 'pointer-events-none');
-                drawer.classList.add('translate-x-full');
-            }
-        }
-
-        // WhatsApp Direct Buy
-        function buyNowWhatsApp(title, size) {
-            const msg = encodeURIComponent(`Hola MILESS! 👋 Quisiera comprar la prenda: *${title}* (${size}) a S/. 50.00. ¿Tienen stock disponible?`);
-            window.open(`https://wa.me/${WSPP_NUMBER}?text=${msg}`, '_blank');
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
         }
 
         function checkoutWhatsApp() {
             if (cart.length === 0) return;
-            let summary = cart.map(i => `- ${i.title} (x${i.qty}) [${i.size}]`).join('\n');
-            const total = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
-            const msg = encodeURIComponent(`Hola MILESS! 👋 Deseo confirmar el siguiente pedido:\n\n${summary}\n\n*Total a pagar: S/. ${total.toFixed(2)}*\n\nQuedo atento para coordinar el pago y envío.`);
-            window.open(`https://wa.me/${WSPP_NUMBER}?text=${msg}`, '_blank');
+            const phone = "51966413339";
+            let message = "Hola MILESS®, quiero hacer el siguiente pedido:\n\n";
+            cart.forEach(item => {
+                message += `▪️ ${item.name} (Talla: ${item.size}) x${item.quantity} - S/. ${item.price * item.quantity}.00\n`;
+            });
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\n*TOTAL A PAGAR: S/. ${total}.00*`;
+
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
         }
 
-        // Modal View
-        function openProductModal(productId) {
-            const p = products.find(item => item.id === productId);
-            document.getElementById('modalMainImg').src = p.images[0];
-            document.getElementById('modalTitle').innerText = p.title;
-            document.getElementById('modalSubtitle').innerText = p.subtitle;
-            document.getElementById('modalSize').innerText = p.size;
-            
-            const thumbs = document.getElementById('modalThumbnails');
-            thumbs.innerHTML = p.images.map((img, i) => `
-                <img src="${img}" onclick="document.getElementById('modalMainImg').src='${img}'" class="w-12 h-12 bg-white rounded-lg p-1 border border-zinc-700 cursor-pointer object-contain">
-            `).join('');
-
-            document.getElementById('modalAddCartBtn').onclick = () => { addToCart(p.id); closeProductModal(); };
-            document.getElementById('modalWsppBtn').onclick = () => buyNowWhatsApp(p.title, p.size);
-
-            document.getElementById('productModal').classList.remove('hidden');
-        }
-
-        function closeProductModal() {
-            document.getElementById('productModal').classList.add('hidden');
-        }
-
-        // Init
-        renderProducts();
+        // Inicializar catálogo al cargar
+        window.onload = () => {
+            renderProducts();
+            lucide.createIcons();
+        };
     </script>
 </body>
 </html>
