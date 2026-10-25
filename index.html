@@ -1,90 +1,63 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MILESS | Streetwear</title>
+    <title>MILESS | Official Streetwear Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        street: {
+                            900: '#000000',
+                            800: '#0a0a0c',
+                            700: '#121216',
+                            600: '#1e1e24'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilos Base - Estética Streetwear Oscura */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', sans-serif;
-            scroll-behavior: smooth;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap');
+        
         body {
+            font-family: 'Inter', sans-serif;
             background-color: #000000;
-            color: #ffffff;
+            color: #f3f4f6;
             overflow-x: hidden;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        /* Navegación */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            border-bottom: 1px solid #222222;
-            background-color: #000000;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262630;
+            border-radius: 3px;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            letter-spacing: 3px;
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #888888;
-        }
-
-        /* Hero Section - Logo 3D */
-        .hero {
-            height: 75vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000000;
-            padding: 20px;
-        }
-
-        .hero-logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 450px;
-            width: 100%;
-        }
-
+        /* Logo 3D Spin Animation */
         @keyframes spin3D {
             0% { transform: rotateY(0deg); }
             100% { transform: rotateY(360deg); }
         }
 
         .logo-3d-rotate {
-            width: 280px;
+            width: 220px;
             height: auto;
             display: block;
             animation: spin3D 8s linear infinite;
@@ -95,429 +68,331 @@
             animation-duration: 4s;
             cursor: pointer;
         }
-
-        /* Sección de Productos */
-        .products {
-            padding: 60px 20px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        /* Cuadro flotante del producto */
-        .card {
-            background: #ffffff;
-            border: 1px solid #eaeaea;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(255,255,255,0.05);
-            width: calc(25% - 30px);
-            min-width: 260px;
-            max-width: 300px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 20px;
-            color: #000000;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(255,255,255,0.15);
-        }
-
-        /* Contenedor uniforme para las imágenes */
-        .card-img-container {
-            width: 100%;
-            height: 210px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffffff;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 5px;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            background-color: #ffffff;
-            padding: 8px;
-            border-radius: 8px;
-        }
-
-        /* Ajustes específicos de tamaño para mantener armonía */
-        .card img[src="gorra-marron-miles.png"] {
-            width: 82% !important;
-            height: 82% !important;
-        }
-
-        /* Agrandar las fotos de los polos para que destaquen igual que las gorras */
-        .card img[src*="polo-"] {
-            width: 125% !important;
-            height: 125% !important;
-            object-fit: cover !important;
-        }
-
-        /* Títulos del producto */
-        .brand-name {
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            margin: 15px 0 2px;
-            color: #111;
-            text-transform: uppercase;
-        }
-
-        .product-subtitle {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 5px;
-            font-style: italic;
-        }
-
-        .click-hint {
-            font-size: 11px;
-            color: #999;
-            margin: 5px 0;
-        }
-
-        /* Información oculta que aparece al hacer clic */
-        .product-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.4s ease;
-            opacity: 0;
-        }
-
-        .card.active .product-details {
-            max-height: 180px;
-            opacity: 1;
-            margin-top: 10px;
-        }
-
-        .price {
-            font-size: 16px;
-            font-weight: bold;
-            color: #000;
-            margin-bottom: 8px;
-        }
-
-        .size {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        /* Botón de compra */
-        .btn-buy {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            transition: background 0.2s;
-        }
-
-        .btn-buy:hover {
-            background-color: #1ebe5d;
-        }
-
-        /* Footer / Contacto */
-        footer {
-            padding: 50px 20px;
-            text-align: center;
-            border-top: 1px solid #222222;
-            color: #888888;
-            font-size: 0.9rem;
-            margin-top: 40px;
-            background-color: #000000;
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .footer-content p {
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .whatsapp-contact-btn {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 15px;
-            margin-bottom: 25px;
-            transition: background 0.2s;
-        }
-
-        .whatsapp-contact-btn:hover {
-            background-color: #1ebe5d;
-        }
-
-        .copyright {
-            font-size: 0.8rem;
-            color: #555;
-        }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between selection:bg-white selection:text-black">
 
-    <!-- Navegación -->
-    <nav>
-        <a href="#" class="logo">MILESS</a>
-        <ul class="nav-links">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-    </nav>
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-zinc-950 via-neutral-900 to-zinc-950 text-xs tracking-widest text-center py-2.5 px-4 border-b border-zinc-800 uppercase font-semibold text-zinc-300">
+        ⚡ Envíos a todo el Perú & EE. UU. | MILESS STREETWEAR ⚡
+    </div>
 
-    <!-- Pantalla Principal con Logo Girando -->
-    <section class="hero">
-        <div class="hero-logo-container">
-            <div style="perspective: 1000px; display: inline-block;">
-                <img src="logo-ms-negro.png" alt="Logo MILESS" class="logo-3d-rotate">
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-black/90 backdrop-blur-md border-b border-zinc-800/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2">
+                <span class="text-2xl sm:text-3xl font-black tracking-tighter text-white uppercase">
+                    MILESS<span class="text-zinc-500">.</span>
+                </span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest uppercase">
+                <a href="#" class="text-white border-b-2 border-white pb-1">INICIO</a>
+                <a href="#catalogo" class="text-zinc-400 hover:text-white transition-colors">CATÁLOGO</a>
+                <a href="#contacto" class="text-zinc-400 hover:text-white transition-colors">CONTACTO</a>
+            </nav>
+
+            <!-- Cart Trigger Button -->
+            <div class="flex items-center gap-4">
+                <button id="cartBtn" onclick="toggleCart(true)" class="relative p-2.5 rounded-full hover:bg-zinc-800 text-zinc-200 transition-colors focus:outline-none flex items-center gap-2 bg-zinc-900 border border-zinc-800 px-4">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span class="text-xs font-bold uppercase hidden sm:inline">Carrito</span>
+                    <span id="cartCount" class="bg-white text-black text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-black">0</span>
+                </button>
             </div>
         </div>
+    </header>
+
+    <!-- Hero Section con Logo 3D Giratorio -->
+    <section class="relative py-12 lg:py-16 bg-black border-b border-zinc-900 flex flex-col items-center justify-center overflow-hidden">
+        <div style="perspective: 1000px;" class="mb-4">
+            <img src="logo-ms-negro.png" alt="Logo MILESS" class="logo-3d-rotate">
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-black uppercase tracking-widest text-center text-white mt-2">MILESS STREETWEAR</h1>
+        <p class="text-xs text-zinc-500 uppercase tracking-widest mt-1">The Kings of the City Collection</p>
     </section>
 
-    <!-- Sección de Productos -->
-    <section class="products" id="catalogo">
+    <!-- Main Catalog Container -->
+    <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
         
-        </div>
-        </div>
-
-        <!-- GORRAS TRÉBOL (Sin subtítulo) -->
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-trebol-blanca.png" alt="Gorra MILESS Trébol Blanca">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-zinc-800 pb-4">
+            <div>
+                <span class="text-xs text-zinc-500 uppercase tracking-widest font-mono">ALL ITEMS - S/. 50.00</span>
+                <h2 class="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white mt-1">Colección Oficial</h2>
             </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20Trebol%20Blanca%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
+            <p class="text-xs text-zinc-400 mt-2 md:mt-0 font-mono">Agrega tus prendas al carrito y finaliza tu pedido directamente por WhatsApp</p>
         </div>
 
-
-        <!-- OTRAS GORRAS ANTERIORES -->
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-marron-miles.png" alt="Gorra MILESS Marrón">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="product-subtitle">the kings of the city</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20Marron%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
+        <!-- Dynamic Product Cards Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Renderizado dinámico vía JS -->
         </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-ms-gris.png" alt="Gorra MILESS MS Gris">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20MS%20Gris%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-ms-negra.png" alt="Gorra MILESS MS Negra">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20MS%20Negra%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-ms.png" alt="Gorra MILESS MS">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20MS%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-gris-miles.png" alt="Gorra MILESS Gris">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="product-subtitle">the kings of the city</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20Gris%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-miles.png" alt="Gorra MILESS Blanca">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="product-subtitle">the kings of the city</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20blanca%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-negra-miles.png" alt="Gorra MILESS Negra Letras Blancas">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="product-subtitle">the kings of the city</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20negra%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <!-- GORRA CLÁSICA CON "THE KINGS OF THE CITY" GRABADO -->
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="gorra-total black.png" alt="Gorra MILESS Total Black Clásica">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="product-subtitle">the kings of the city</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: T/U (Talla Única)</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20la%20gorra%20MILESS%20Total%20Black%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <!-- POLOS -->
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="polo-negro-miles.png" alt="Polo MILESS Negro">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: L</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20polo%20MILESS%20negro%20(Talla%20L)%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="polo-negro-ms.png" alt="Polo MILESS MS Negro">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Tallas: M y L</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20polo%20MILESS%20MS%20negro%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="polo-negro-miles-3.png" alt="Polo MILESS Negro 3">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Tallas: M - L - XL</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20tercer%20polo%20MILESS%20negro%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="polo-blanco-ms.png" alt="Polo MILESS MS Blanco">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: L</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20polo%20MILESS%20MS%20blanco%20(Talla%20L)%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="polo-blanco-miles.png" alt="Polo MILESS Blanco">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: L</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20polo%20MILESS%20blanco%20(Talla%20L)%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-        <div class="card" onclick="this.classList.toggle('active')">
-            <div class="card-img-container">
-                <img src="polo-blanco-miles-3.png" alt="Polo MILESS Blanco 3">
-            </div>
-            <div class="brand-name">MILESS</div>
-            <div class="click-hint">Haz clic para ver detalles</div>
-            <div class="product-details" onclick="event.stopPropagation()">
-                <div class="price">S/. 50</div>
-                <div class="size">Talla: M</div>
-                <a href="https://wa.me/51966413339?text=Hola,%20estoy%20interesado%20en%20comprar%20el%20tercer%20polo%20MILESS%20blanco%20(Talla%20M)%20a%20S/.50" target="_blank" class="btn-buy">Comprar</a>
-            </div>
-        </div>
-
-    </section>
+    </main>
 
     <!-- Footer / Contacto -->
-    <footer id="contacto">
-        <div class="footer-content">
-            <p>¿Tienes dudas o consultas directas?</p>
-            <a href="https://wa.me/51966413339?text=Hola,%20vengo%20de%20la%20web%20de%20MILESS%20y%20quiero%20consultar%20algo." target="_blank" class="whatsapp-contact-btn">Escríbenos al WhatsApp</a>
-            <div class="copyright">&copy; 2026 MILESS. Todos los derechos reservados.</div>
+    <footer id="contacto" class="bg-zinc-950 border-t border-zinc-800 mt-20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-3xl font-black tracking-tighter text-white uppercase">MILESS<span class="text-zinc-600">.</span></span>
+            <p class="text-xs text-zinc-400 tracking-widest uppercase mt-2">¿TIENES DUDAS O CONSULTAS DIRECTAS?</p>
+            
+            <div class="mt-6">
+                <a href="https://wa.me/51966413339?text=Hola,%20vengo%20de%20la%20web%20de%20MILESS%20y%20quiero%20consultar%20algo." target="_blank" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-6 rounded-xl text-xs uppercase tracking-wider transition-all shadow-lg active:scale-95">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Escríbenos al WhatsApp</span>
+                </a>
+            </div>
+
+            <p class="text-[11px] text-zinc-600 mt-8 font-mono">&copy; 2026 MILESS. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <!-- MODAL DE VISTA DETALLADA DEL PRODUCTO (Imágenes adicionales) -->
+    <div id="productModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl max-w-2xl w-full p-6 relative shadow-2xl overflow-hidden flex flex-col md:flex-row gap-6">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-white z-10">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <!-- Visor de imágenes -->
+            <div class="w-full md:w-1/2 flex flex-col gap-3">
+                <div class="w-full h-64 bg-white rounded-xl p-3 flex items-center justify-center overflow-hidden">
+                    <img id="modalMainImg" src="" alt="" class="h-full object-contain">
+                </div>
+                <!-- Galería de Miniaturas -->
+                <div id="modalThumbnails" class="flex gap-2 overflow-x-auto pb-1">
+                    <!-- Inyectado por JS -->
+                </div>
+            </div>
+
+            <!-- Detalles y acciones -->
+            <div class="w-full md:w-1/2 flex flex-col justify-between">
+                <div>
+                    <span id="modalCategory" class="text-[10px] font-mono uppercase bg-zinc-800 text-zinc-300 px-2 py-1 rounded">STREETWEAR</span>
+                    <h3 id="modalTitle" class="text-xl font-black uppercase text-white mt-2"></h3>
+                    <p id="modalSubtitle" class="text-xs text-zinc-400 italic mt-0.5"></p>
+                    <p id="modalSize" class="text-xs font-mono text-zinc-300 mt-3"></p>
+                    <p class="text-2xl font-black font-mono text-white mt-2">S/. 50.00</p>
+                </div>
+
+                <div class="space-y-3 mt-6">
+                    <button id="modalAddCartBtn" onclick="" class="w-full bg-white hover:bg-zinc-200 text-black font-black py-3 rounded-xl uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Añadir al Carrito
+                    </button>
+                    <button id="modalWsppBtn" onclick="" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl uppercase tracking-wider text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Comprar Directo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE-OVER CART DRAWER MODAL -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div id="cartDrawer" class="fixed inset-y-0 right-0 max-w-full flex pl-10 transform translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="w-screen max-w-md bg-zinc-950 border-l border-zinc-800 text-white flex flex-col justify-between shadow-2xl">
+                
+                <!-- Drawer Header -->
+                <div class="p-6 border-b border-zinc-800 flex items-center justify-between">
+                    <h2 class="text-lg font-black uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-zinc-400"></i> Tu Carrito MILESS
+                    </h2>
+                    <button onclick="toggleCart(false)" class="p-2 text-zinc-400 hover:text-white rounded-lg">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Drawer Body / Item List -->
+                <div id="cartList" class="p-6 flex-grow overflow-y-auto space-y-4">
+                    <div id="emptyCartMsg" class="h-full flex flex-col items-center justify-center text-center py-12 text-zinc-500">
+                        <i class="fa-solid fa-cart-flatbed text-4xl mb-3 opacity-40"></i>
+                        <p class="text-sm font-semibold text-white">Tu carrito está vacío</p>
+                        <p class="text-xs text-zinc-500 mt-1">Añade prendas del catálogo para hacer un solo pedido.</p>
+                    </div>
+
+                    <div id="cartItemsContainer" class="space-y-4 hidden"></div>
+                </div>
+
+                <!-- Drawer Footer -->
+                <div class="p-6 border-t border-zinc-800 bg-black space-y-4">
+                    <div class="flex justify-between text-sm text-white font-extrabold pb-2 border-b border-zinc-800">
+                        <span>Total:</span>
+                        <span id="cartTotal" class="font-mono text-lg">S/. 0.00</span>
+                    </div>
+
+                    <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 rounded-xl uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-xl transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>ENVIAR PEDIDO POR WHATSAPP</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Número oficial
+        const WSPP_NUMBER = "51966413339";
+
+        // Colección de Productos (puedes agregarle más rutas de fotos en "images")
+        const products = [
+            { id: 1, title: "Gorra MILESS Trébol", subtitle: "Edición Blanca", size: "T/U (Talla Única)", price: 50, images: ["gorra-trebol-blanca.png"] },
+            { id: 2, title: "Gorra MILESS Marrón", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-marron-miles.png"] },
+            { id: 3, title: "Gorra MILESS MS Gris", subtitle: "Streetwear Cap", size: "T/U (Talla Única)", price: 50, images: ["gorra-ms-gris.png"] },
+            { id: 4, title: "Gorra MILESS MS Negra", subtitle: "Streetwear Cap", size: "T/U (Talla Única)", price: 50, images: ["gorra-ms-negra.png"] },
+            { id: 5, title: "Gorra MILESS MS Emblem", subtitle: "Streetwear Cap", size: "T/U (Talla Única)", price: 50, images: ["gorra-ms.png"] },
+            { id: 6, title: "Gorra MILESS Gris", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-gris-miles.png"] },
+            { id: 7, title: "Gorra MILESS Blanca", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-miles.png"] },
+            { id: 8, title: "Gorra MILESS Negra", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-negra-miles.png"] },
+            { id: 9, title: "Gorra MILESS Total Black", subtitle: "the kings of the city", size: "T/U (Talla Única)", price: 50, images: ["gorra-total black.png"] },
+            { id: 10, title: "Polo MILESS Negro", subtitle: "Streetwear Edition", size: "Talla: L", price: 50, images: ["polo-negro-miles.png"] },
+            { id: 11, title: "Polo MILESS MS Negro", subtitle: "Streetwear Edition", size: "Tallas: M y L", price: 50, images: ["polo-negro-ms.png"] },
+            { id: 12, title: "Polo MILESS Negro 3", subtitle: "Streetwear Edition", size: "Tallas: M - L - XL", price: 50, images: ["polo-negro-miles-3.png"] },
+            { id: 13, title: "Polo MILESS MS Blanco", subtitle: "Streetwear Edition", size: "Talla: L", price: 50, images: ["polo-blanco-ms.png"] },
+            { id: 14, title: "Polo MILESS Blanco", subtitle: "Streetwear Edition", size: "Talla: L", price: 50, images: ["polo-blanco-miles.png"] },
+            { id: 15, title: "Polo MILESS Blanco 3", subtitle: "Streetwear Edition", size: "Talla: M", price: 50, images: ["polo-blanco-miles-3.png"] }
+        ];
+
+        let cart = [];
+
+        // Renderizar Cuadros
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = products.map(p => `
+                <div class="group bg-zinc-900/60 border border-zinc-800 hover:border-zinc-500 rounded-2xl p-4 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div onclick="openProductModal(${p.id})" class="w-full h-52 bg-white rounded-xl p-3 flex items-center justify-center overflow-hidden cursor-pointer relative">
+                            <img src="${p.images[0]}" alt="${p.title}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300">
+                            ${p.images.length > 1 ? `<span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] px-2 py-0.5 rounded font-mono">+${p.images.length} fotos</span>` : ''}
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-base font-black uppercase text-white tracking-tight">${p.title}</h3>
+                            <p class="text-xs text-zinc-400 italic font-medium">${p.subtitle}</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-zinc-800 flex flex-col gap-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-zinc-500 font-mono">${p.size}</span>
+                            <span class="text-base font-extrabold text-white font-mono">S/. ${p.price.toFixed(2)}</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 mt-1">
+                            <button onclick="addToCart(${p.id})" class="bg-zinc-800 hover:bg-zinc-700 text-white font-bold py-2 rounded-xl text-[11px] uppercase transition-colors flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-cart-plus"></i> Añadir
+                            </button>
+                            <button onclick="buyNowWhatsApp('${p.title}', '${p.size}')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-xl text-[11px] uppercase transition-colors flex items-center justify-center gap-1">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Pedir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Carrito Logic
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.qty++;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const countEl = document.getElementById('cartCount');
+            const totalEl = document.getElementById('cartTotal');
+            const emptyMsg = document.getElementById('emptyCartMsg');
+            const container = document.getElementById('cartItemsContainer');
+
+            const totalItems = cart.reduce((acc, curr) => acc + curr.qty, 0);
+            const totalPrice = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
+
+            countEl.innerText = totalItems;
+            totalEl.innerText = `S/. ${totalPrice.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                emptyMsg.classList.remove('hidden');
+                container.classList.add('hidden');
+            } else {
+                emptyMsg.classList.add('hidden');
+                container.classList.remove('hidden');
+                container.innerHTML = cart.map((item, idx) => `
+                    <div class="flex items-center gap-3 bg-zinc-900 p-3 rounded-xl border border-zinc-800">
+                        <img src="${item.images[0]}" class="w-12 h-12 object-contain bg-white rounded-lg p-1">
+                        <div class="flex-grow min-w-0">
+                            <h4 class="text-xs font-bold text-white truncate">${item.title}</h4>
+                            <p class="text-[10px] text-zinc-400">${item.size}</p>
+                            <p class="text-xs font-mono font-bold text-white mt-0.5">S/. ${item.price} x ${item.qty}</p>
+                        </div>
+                        <button onclick="removeCartItem(${idx})" class="text-zinc-500 hover:text-red-400 p-1">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleCart(show) {
+            const overlay = document.getElementById('cartOverlay');
+            const drawer = document.getElementById('cartDrawer');
+            if (show) {
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        // WhatsApp Direct Buy
+        function buyNowWhatsApp(title, size) {
+            const msg = encodeURIComponent(`Hola MILESS! 👋 Quisiera comprar la prenda: *${title}* (${size}) a S/. 50.00. ¿Tienen stock disponible?`);
+            window.open(`https://wa.me/${WSPP_NUMBER}?text=${msg}`, '_blank');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) return;
+            let summary = cart.map(i => `- ${i.title} (x${i.qty}) [${i.size}]`).join('\n');
+            const total = cart.reduce((acc, curr) => acc + (curr.price * curr.qty), 0);
+            const msg = encodeURIComponent(`Hola MILESS! 👋 Deseo confirmar el siguiente pedido:\n\n${summary}\n\n*Total a pagar: S/. ${total.toFixed(2)}*\n\nQuedo atento para coordinar el pago y envío.`);
+            window.open(`https://wa.me/${WSPP_NUMBER}?text=${msg}`, '_blank');
+        }
+
+        // Modal View
+        function openProductModal(productId) {
+            const p = products.find(item => item.id === productId);
+            document.getElementById('modalMainImg').src = p.images[0];
+            document.getElementById('modalTitle').innerText = p.title;
+            document.getElementById('modalSubtitle').innerText = p.subtitle;
+            document.getElementById('modalSize').innerText = p.size;
+            
+            const thumbs = document.getElementById('modalThumbnails');
+            thumbs.innerHTML = p.images.map((img, i) => `
+                <img src="${img}" onclick="document.getElementById('modalMainImg').src='${img}'" class="w-12 h-12 bg-white rounded-lg p-1 border border-zinc-700 cursor-pointer object-contain">
+            `).join('');
+
+            document.getElementById('modalAddCartBtn').onclick = () => { addToCart(p.id); closeProductModal(); };
+            document.getElementById('modalWsppBtn').onclick = () => buyNowWhatsApp(p.title, p.size);
+
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // Init
+        renderProducts();
+    </script>
 </body>
 </html>
