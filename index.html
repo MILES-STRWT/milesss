@@ -78,7 +78,7 @@
         </div>
     </header>
 
-    <!-- Hero Section con Logo 3D Giratorio (Línea horizontal eliminada) -->
+    <!-- Hero Section con Logo 3D Giratorio -->
     <section class="relative py-16 bg-black flex flex-col items-center justify-center overflow-hidden">
         <div style="perspective: 1000px;" class="flex items-center justify-center">
             <img src="logo-ms-negro.png" alt="Logo MILESS 3D" class="logo-3d-rotate">
@@ -98,11 +98,11 @@
 
         <!-- Product Grid Dynamic (15 Items) -->
         <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Renderizado dinámicamente -->
+            <!-- Renderizado dinámicamente por JS -->
         </div>
     </main>
 
-    <!-- PRODUCT DETAIL MODAL (Vista grande tipo e-commerce con galería de múltiples imágenes) -->
+    <!-- PRODUCT DETAIL MODAL (Vista grande tipo e-commerce) -->
     <div id="productModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 hidden overflow-y-auto">
         <div class="relative w-full max-w-5xl bg-zinc-950 border border-zinc-800 rounded-3xl p-6 md:p-10 my-auto shadow-2xl">
             <!-- Botón Cerrar Modal -->
@@ -112,11 +112,11 @@
 
             <!-- Breadcrumb -->
             <div class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-6 flex items-center gap-2">
-                <span>INICIO</span> / <span id="modalCategory">CATÁLOGO</span> / <span id="modalBreadcrumbName" class="text-white">PRENDA</span>
+                <span>INICIO</span> / <span id="modalCategory">GORRAS</span> / <span id="modalBreadcrumbName" class="text-white">PRENDA</span>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <!-- Columna Izquierda: Imagen Principal y Selector de Miniaturas (Galería de 4 imágenes) -->
+                <!-- Columna Izquierda: Imagen Principal y Galería de Miniaturas -->
                 <div class="flex flex-col gap-4">
                     <div class="relative bg-zinc-900 border border-zinc-800/80 rounded-2xl p-6 flex flex-col items-center justify-center h-80">
                         <div class="absolute top-4 left-4 flex gap-2 z-10">
@@ -126,7 +126,7 @@
                         <img id="modalMainImg" src="" alt="Prenda MILESS" class="max-h-60 object-contain transition-all duration-300">
                     </div>
 
-                    <!-- Miniaturas / Galería (3 imágenes adicionales + principal) -->
+                    <!-- Miniaturas / Galería -->
                     <div class="grid grid-cols-4 gap-3" id="modalThumbnails">
                         <!-- Generado por JS -->
                     </div>
@@ -145,21 +145,20 @@
                         <h1 id="modalTitle" class="text-3xl font-black uppercase text-white tracking-tight">MILESS</h1>
                         <p id="modalSubtitle" class="text-xs text-zinc-400 italic font-medium mt-1 mb-4">"The Kings of the City" Streetwear Edition</p>
 
-                        <!-- Precios con costo real S/. 50.00 -->
+                        <!-- Precio Único de S/. 50.00 -->
                         <div class="flex items-baseline gap-3 mb-6">
                             <span id="modalPrice" class="text-3xl font-black text-white font-mono">S/. 50.00</span>
-                            <span class="text-sm text-zinc-600 line-through font-mono">S/. 75.00</span>
-                            <span class="bg-zinc-900 border border-zinc-800 text-zinc-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase">-33% OFF</span>
                         </div>
 
-                        <!-- Selector de Tallas / Corte -->
+                        <!-- Talla / Corte -->
                         <div class="mb-6">
                             <span class="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2">Talla / Corte:</span>
                             <div class="flex gap-2">
                                 <span id="modalSizeBadge" class="bg-white text-black font-bold text-xs py-2.5 px-4 rounded-xl border border-white">TALLA ÚNICA / ADJUSTABLE</span>
                             </div>
-                            <p class="text-[11px] text-zinc-500 mt-2 font-mono">
-                                Confección urbana de alta calidad, algodón pesado y acabados resistentes de máxima durabilidad.
+                            <!-- Descripción Dinámica por Tipo de Prenda -->
+                            <p class="text-[11px] text-zinc-400 mt-3 leading-relaxed font-mono" id="modalDescription">
+                                <!-- Se rellena por JS -->
                             </p>
                         </div>
                     </div>
@@ -229,21 +228,21 @@
     <!-- JavaScript Lógica Completa -->
     <script>
         const products = [
-            { id: 1, sku: "MLS-CAP-001", cat: "GORRAS", name: "MILESS", sub: "Gorra Trébol Blanca", img: "gorra-trebol-blanca.png", price: 50, size: "T/U" },
-            { id: 2, sku: "MLS-CAP-002", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city"', img: "gorra-marron-miles.png", price: 50, size: "T/U" },
-            { id: 3, sku: "MLS-CAP-003", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Gris", img: "gorra-ms-gris.png", price: 50, size: "T/U" },
-            { id: 4, sku: "MLS-CAP-004", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Negra", img: "gorra-ms-negra.png", price: 50, size: "T/U" },
-            { id: 5, sku: "MLS-CAP-005", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Emblem", img: "gorra-ms.png", price: 50, size: "T/U" },
-            { id: 6, sku: "MLS-CAP-006", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Gris', img: "gorra-gris-miles.png", price: 50, size: "T/U" },
-            { id: 7, sku: "MLS-CAP-007", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Blanca', img: "gorra-miles.png", price: 50, size: "T/U" },
-            { id: 8, sku: "MLS-CAP-008", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Negra', img: "gorra-negra-miles.png", price: 50, size: "T/U" },
-            { id: 9, sku: "MLS-CAP-009", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Total Black', img: "gorra-total black.png", price: 50, size: "T/U" },
-            { id: 10, sku: "MLS-TEE-010", cat: "POLOS", name: "MILESS", sub: "Polo Negro Streetwear", img: "polo-negro-miles.png", price: 50, size: "Talla L" },
-            { id: 11, sku: "MLS-TEE-011", cat: "POLOS", name: "MILESS", sub: "Polo MS Negro", img: "polo-negro-ms.png", price: 50, size: "Talla M & L" },
-            { id: 12, sku: "MLS-TEE-012", cat: "POLOS", name: "MILESS", sub: "Polo Negro Edition 3", img: "polo-negro-miles-3.png", price: 50, size: "Talla M - L - XL" },
-            { id: 13, sku: "MLS-TEE-013", cat: "POLOS", name: "MILESS", sub: "Polo MS Blanco", img: "polo-blanco-ms.png", price: 50, size: "Talla L" },
-            { id: 14, sku: "MLS-TEE-014", cat: "POLOS", name: "MILESS", sub: "Polo Blanco Streetwear", img: "polo-blanco-miles.png", price: 50, size: "Talla L" },
-            { id: 15, sku: "MLS-TEE-015", cat: "POLOS", name: "MILESS", sub: "Polo Blanco Edition 3", img: "polo-blanco-miles-3.png", price: 50, size: "Talla M" }
+            { id: 1, sku: "MLS-CAP-001", cat: "GORRAS", name: "MILESS", sub: "Gorra Trébol Blanca", img: "gorra-trebol-blanca.png", price: 50, size: "T/U", desc: "Gorra trucker de copa estructurada con bordado en alto relieve 3D de alta densidad. Frente de poliéster acolchado, malla trasera respirable y broche regulable Snapback de doble ajuste." },
+            { id: 2, sku: "MLS-CAP-002", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city"', img: "gorra-marron-miles.png", price: 50, size: "T/U", desc: "Edición especial en combinación marrón/crema. Bordado frontal 3D 'The Kings of the City' con tipografía gótica exclusiva, bordado lateral del logo MS y malla trasera de alta resistencia." },
+            { id: 3, sku: "MLS-CAP-003", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Gris", img: "gorra-ms-gris.png", price: 50, size: "T/U", desc: "Trucker cap en tono gris urbano. Presenta el emblema gótico MS bordado en alto relieve frontal con hilo reforzado, visera semi-curva y broche adaptable." },
+            { id: 4, sku: "MLS-CAP-004", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Negra", img: "gorra-ms-negra.png", price: 50, size: "T/U", desc: "Diseño monocromático en negro profundo con bordado 3D en relieve del logo MS. Confección premium con broche snapback ajustable." },
+            { id: 5, sku: "MLS-CAP-005", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Emblem", img: "gorra-ms.png", price: 50, size: "T/U", desc: "Gorra estructurada con bordado frontal distintivo MS en relieve denso, etiquetado interno de marca y acabado streetwear." },
+            { id: 6, sku: "MLS-CAP-006", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Gris', img: "gorra-gris-miles.png", price: 50, size: "T/U", desc: "Trucker cap gris con bordado frontal arqueado en alto relieve, malla posterior respirable y ajuste preciso." },
+            { id: 7, sku: "MLS-CAP-007", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Blanca', img: "gorra-miles.png", price: 50, size: "T/U", desc: "Gorra blanca clásica con detalles bordados en relieve negro, frontal estructurado y broche snapback regulable." },
+            { id: 8, sku: "MLS-CAP-008", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Negra', img: "gorra-negra-miles.png", price: 50, size: "T/U", desc: "Gorra negra clásica con tipografía gótica bordada en relieve blanco de alta definición y laterales personalizados." },
+            { id: 9, sku: "MLS-CAP-009", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Total Black', img: "gorra-total black.png", price: 50, size: "T/U", desc: "Edición stealth Total Black. Bordado en alto relieve negro sobre frente negro, diseñado para un estilo minimalista y sigiloso." },
+            { id: 10, sku: "MLS-TEE-010", cat: "POLOS", name: "MILESS", sub: "Polo Negro Streetwear", img: "polo-negro-miles.png", price: 50, size: "Talla L", desc: "Polo confeccionado en algodón pesado heavyweight de 240g de alta densidad. Fit oversized boxy, cuello rib grueso reforzado e estampado textil de máxima durabilidad." },
+            { id: 11, sku: "MLS-TEE-011", cat: "POLOS", name: "MILESS", sub: "Polo MS Negro", img: "polo-negro-ms.png", price: 50, size: "Talla M & L", desc: "Polo urbano negro en algodón pesado con estampado de alta resolución del emblema MS. Hombros caídos y estructura holgada." },
+            { id: 12, sku: "MLS-TEE-012", cat: "POLOS", name: "MILESS", sub: "Polo Negro Edition 3", img: "polo-negro-miles-3.png", price: 50, size: "Talla M - L - XL", desc: "Polo de edición limitada en 100% algodón reactivo pesado de tacto suave. No se encoge ni decolora con los lavados." },
+            { id: 13, sku: "MLS-TEE-013", cat: "POLOS", name: "MILESS", sub: "Polo MS Blanco", img: "polo-blanco-ms.png", price: 50, size: "Talla L", desc: "Polo blanco en algodón heavyweight premium con estampado central MS. Corte oversized cómodo y fresco para el día a día." },
+            { id: 14, sku: "MLS-TEE-014", cat: "POLOS", name: "MILESS", sub: "Polo Blanco Streetwear", img: "polo-blanco-miles.png", price: 50, size: "Talla L", desc: "Polo streetwear blanco de silhouette holgada. Tejido de grosor superior con costuras reforzadas en hombros y cuello." },
+            { id: 15, sku: "MLS-TEE-015", cat: "POLOS", name: "MILESS", sub: "Polo Blanco Edition 3", img: "polo-blanco-miles-3.png", price: 50, size: "Talla M", desc: "Tercera edición del polo blanco en tejido pesado con detalles gráficos de la marca en alta fidelidad textil." }
         ];
 
         let cart = [];
@@ -288,8 +287,9 @@
             document.getElementById('modalSubtitle').innerText = activeProduct.sub;
             document.getElementById('modalSizeBadge').innerText = activeProduct.size;
             document.getElementById('modalPrice').innerText = `S/. ${activeProduct.price}.00`;
+            document.getElementById('modalDescription').innerText = activeProduct.desc;
 
-            // Configurar Imagen principal y miniaturas (Simulando 3 imágenes extra usando la misma foto o variantes)
+            // Configurar Imagen principal y miniaturas
             const mainImg = document.getElementById('modalMainImg');
             mainImg.src = activeProduct.img;
 
@@ -360,7 +360,7 @@
                 `;
             } else {
                 container.innerHTML = cart.map(item => `
-                    py-4 flex items-center justify-between gap-4">
+                    <div class="py-4 flex items-center justify-between gap-4">
                         <img src="${item.img}" class="w-16 h-16 object-contain bg-zinc-900 border border-zinc-800 rounded-xl p-1">
                         <div class="flex-1">
                             <h4 class="text-xs font-bold uppercase text-white">${item.name}</h4>
@@ -404,3 +404,4 @@
     </script>
 </body>
 </html>
+
