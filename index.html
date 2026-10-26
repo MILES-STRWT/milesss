@@ -102,7 +102,7 @@
         </div>
     </main>
 
-    <!-- PRODUCT DETAIL MODAL -->
+    <!-- PRODUCT DETAIL MODAL (Vista grande tipo e-commerce con marco blanco completo) -->
     <div id="productModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 hidden overflow-y-auto">
         <div class="relative w-full max-w-5xl bg-zinc-950 border border-zinc-800 rounded-3xl p-6 md:p-10 my-auto shadow-2xl">
             <!-- Botón Cerrar Modal -->
@@ -116,17 +116,17 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <!-- Columna Izquierda: Imagen Principal y Miniaturas -->
+                <!-- Columna Izquierda: Imagen Principal en Fondo Blanco Completo -->
                 <div class="flex flex-col gap-4">
-                    <div class="relative bg-zinc-900 border border-zinc-800/80 rounded-2xl p-6 flex flex-col items-center justify-center h-80">
+                    <div class="relative bg-white rounded-2xl overflow-hidden h-96 flex items-center justify-center border border-zinc-800">
                         <div class="absolute top-4 left-4 flex gap-2 z-10">
-                            <span class="bg-zinc-800 text-zinc-300 text-[10px] font-bold px-2.5 py-1 rounded-md uppercase">ORIGINAL FIT</span>
-                            <span class="bg-white text-black text-[10px] font-black px-2.5 py-1 rounded-md uppercase">EDICIÓN LIMITADA</span>
+                            <span class="bg-zinc-900/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider backdrop-blur-md">ORIGINAL FIT</span>
+                            <span class="bg-black text-white text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider">EDICIÓN LIMITADA</span>
                         </div>
-                        <img id="modalMainImg" src="" alt="Prenda MILESS" class="max-h-60 object-contain transition-all duration-300">
+                        <img id="modalMainImg" src="" alt="Prenda MILESS" class="w-full h-full object-cover transition-all duration-300">
                     </div>
 
-                    <!-- Miniaturas / Galería -->
+                    <!-- Miniaturas con Fondo Blanco Completo -->
                     <div class="grid grid-cols-4 gap-3" id="modalThumbnails">
                         <!-- Generado por JS -->
                     </div>
@@ -145,7 +145,7 @@
                         <h1 id="modalTitle" class="text-3xl font-black uppercase text-white tracking-tight">MILESS</h1>
                         <p id="modalSubtitle" class="text-xs text-zinc-400 italic font-medium mt-1 mb-4">"The Kings of the City" Streetwear Edition</p>
 
-                        <!-- Precio Único de S/. 50.00 (Sin descuentos falsos) -->
+                        <!-- Precio Único S/. 50.00 -->
                         <div class="flex items-baseline gap-3 mb-6">
                             <span id="modalPrice" class="text-3xl font-black text-white font-mono">S/. 50.00</span>
                         </div>
@@ -184,7 +184,7 @@
         </div>
     </div>
 
-    <!-- CART SIDE DRAWER -->
+    <!-- CART SIDE DRAWER (Carrito Lateral Desplegable) -->
     <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleCartDrawer()"></div>
         <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
@@ -288,7 +288,7 @@
             document.getElementById('modalPrice').innerText = `S/. ${activeProduct.price}.00`;
             document.getElementById('modalDescription').innerText = activeProduct.desc;
 
-            // Galería automática basada en sufijos -2, -3, -4
+            // Galería basada en el nombre base de la imagen
             const dotIndex = activeProduct.baseImg.lastIndexOf('.');
             const baseName = activeProduct.baseImg.substring(0, dotIndex);
             const ext = activeProduct.baseImg.substring(dotIndex);
@@ -304,8 +304,8 @@
 
             const thumbsContainer = document.getElementById('modalThumbnails');
             thumbsContainer.innerHTML = galleryImages.map((imgSrc, idx) => `
-                <div onclick="changeMainImage('${imgSrc}')" class="cursor-pointer bg-zinc-900 border ${idx === 0 ? 'border-white' : 'border-zinc-800'} rounded-xl p-2 h-16 flex items-center justify-center hover:border-zinc-400 transition-all">
-                    <img src="${imgSrc}" class="h-full object-contain" onerror="this.src='${activeProduct.baseImg}'">
+                <div onclick="changeMainImage('${imgSrc}')" class="cursor-pointer bg-white border ${idx === 0 ? 'border-black ring-2 ring-white' : 'border-zinc-300'} rounded-xl overflow-hidden h-16 flex items-center justify-center hover:opacity-90 transition-all">
+                    <img src="${imgSrc}" class="w-full h-full object-cover" onerror="this.src='${activeProduct.baseImg}'">
                 </div>
             `).join('');
 
@@ -368,7 +368,7 @@
             } else {
                 container.innerHTML = cart.map(item => `
                     <div class="py-4 flex items-center justify-between gap-4">
-                        <img src="${item.img}" class="w-16 h-16 object-contain bg-zinc-900 border border-zinc-800 rounded-xl p-1">
+                        <img src="${item.img}" class="w-16 h-16 object-cover bg-white border border-zinc-800 rounded-xl">
                         <div class="flex-1">
                             <h4 class="text-xs font-bold uppercase text-white">${item.name}</h4>
                             <p class="text-[11px] text-zinc-400">${item.sub}</p>
@@ -411,4 +411,3 @@
     </script>
 </body>
 </html>
-
