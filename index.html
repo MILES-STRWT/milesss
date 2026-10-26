@@ -102,7 +102,7 @@
         </div>
     </main>
 
-    <!-- PRODUCT DETAIL MODAL (Vista grande tipo e-commerce con marco blanco completo) -->
+    <!-- PRODUCT DETAIL MODAL (Imagen alejada y encuadrada sobre fondo blanco) -->
     <div id="productModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 hidden overflow-y-auto">
         <div class="relative w-full max-w-5xl bg-zinc-950 border border-zinc-800 rounded-3xl p-6 md:p-10 my-auto shadow-2xl">
             <!-- Botón Cerrar Modal -->
@@ -116,17 +116,17 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <!-- Columna Izquierda: Imagen Principal en Fondo Blanco Completo -->
+                <!-- Columna Izquierda: Imagen Principal Alejada y Alejamiento Correcto en Fondo Blanco -->
                 <div class="flex flex-col gap-4">
-                    <div class="relative bg-white rounded-2xl overflow-hidden h-96 flex items-center justify-center border border-zinc-800">
+                    <div class="relative bg-white rounded-2xl overflow-hidden h-96 p-6 flex items-center justify-center border border-zinc-800">
                         <div class="absolute top-4 left-4 flex gap-2 z-10">
                             <span class="bg-zinc-900/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider backdrop-blur-md">ORIGINAL FIT</span>
                             <span class="bg-black text-white text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider">EDICIÓN LIMITADA</span>
                         </div>
-                        <img id="modalMainImg" src="" alt="Prenda MILESS" class="w-full h-full object-cover transition-all duration-300">
+                        <img id="modalMainImg" src="" alt="Prenda MILESS" class="w-full h-full object-contain p-2 transition-all duration-300">
                     </div>
 
-                    <!-- Miniaturas con Fondo Blanco Completo -->
+                    <!-- Miniaturas con Fondo Blanco y Mismo Enfoque -->
                     <div class="grid grid-cols-4 gap-3" id="modalThumbnails">
                         <!-- Generado por JS -->
                     </div>
@@ -184,7 +184,7 @@
         </div>
     </div>
 
-    <!-- CART SIDE DRAWER (Carrito Lateral Desplegable) -->
+    <!-- CART SIDE DRAWER -->
     <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="toggleCartDrawer()"></div>
         <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
@@ -229,7 +229,7 @@
         const products = [
             { id: 1, sku: "MLS-CAP-001", cat: "GORRAS", name: "MILESS", sub: "Gorra Trébol Blanca", baseImg: "gorra-trebol-blanca.png", price: 50, size: "T/U", desc: "Gorra trucker de copa estructurada con bordado en alto relieve 3D de alta densidad. Frente de poliéster acolchado, malla trasera respirable y broche regulable Snapback de doble ajuste." },
             { id: 2, sku: "MLS-CAP-002", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city"', baseImg: "gorra-marron-miles.png", price: 50, size: "T/U", desc: "Edición especial en combinación marrón/crema. Bordado frontal 3D 'The Kings of the City' con tipografía gótica exclusiva, bordado lateral del logo MS y malla trasera de alta resistencia." },
-            { id: 3, sku: "MLS-CAP-003", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Gris", baseImg: "gorra-ms-gris.png", price: 50, size: "T/U", desc: "Trucker cap en tono gris urbano. Presenta el emblema gótico MS bordado en alto relieve frontal con hilo reforzado, visera semi-curva y broche adaptable." },
+            { id: 3, sku: "MLS-CAP-003", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Gris", baseImg: "gorra-ms-gris.png", price: 50, size: "T/U", desc: "Trucker cap en tono gris urbano. Presenta el emblema gótico MS bordado en alto relieve frontal con hilo reinforced, visera semi-curva y broche adaptable." },
             { id: 4, sku: "MLS-CAP-004", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Negra", baseImg: "gorra-ms-negra.png", price: 50, size: "T/U", desc: "Diseño monocromático en negro profundo con bordado 3D en relieve del logo MS. Confección premium con broche snapback ajustable." },
             { id: 5, sku: "MLS-CAP-005", cat: "GORRAS", name: "MILESS", sub: "Gorra MS Emblem", baseImg: "gorra-ms.png", price: 50, size: "T/U", desc: "Gorra estructurada con bordado frontal distintivo MS en relieve denso, etiquetado interno de marca y acabado streetwear." },
             { id: 6, sku: "MLS-CAP-006", cat: "GORRAS", name: "MILESS", sub: '"the kings of the city" Gris', baseImg: "gorra-gris-miles.png", price: 50, size: "T/U", desc: "Trucker cap gris con bordado frontal arqueado en alto relieve, malla posterior respirable y ajuste preciso." },
@@ -304,8 +304,8 @@
 
             const thumbsContainer = document.getElementById('modalThumbnails');
             thumbsContainer.innerHTML = galleryImages.map((imgSrc, idx) => `
-                <div onclick="changeMainImage('${imgSrc}')" class="cursor-pointer bg-white border ${idx === 0 ? 'border-black ring-2 ring-white' : 'border-zinc-300'} rounded-xl overflow-hidden h-16 flex items-center justify-center hover:opacity-90 transition-all">
-                    <img src="${imgSrc}" class="w-full h-full object-cover" onerror="this.src='${activeProduct.baseImg}'">
+                <div onclick="changeMainImage('${imgSrc}')" class="cursor-pointer bg-white border ${idx === 0 ? 'border-black ring-2 ring-white' : 'border-zinc-300'} rounded-xl overflow-hidden h-16 p-1 flex items-center justify-center hover:opacity-90 transition-all">
+                    <img src="${imgSrc}" class="w-full h-full object-contain" onerror="this.src='${activeProduct.baseImg}'">
                 </div>
             `).join('');
 
@@ -368,7 +368,7 @@
             } else {
                 container.innerHTML = cart.map(item => `
                     <div class="py-4 flex items-center justify-between gap-4">
-                        <img src="${item.img}" class="w-16 h-16 object-cover bg-white border border-zinc-800 rounded-xl">
+                        <img src="${item.img}" class="w-16 h-16 object-contain p-1 bg-white border border-zinc-800 rounded-xl">
                         <div class="flex-1">
                             <h4 class="text-xs font-bold uppercase text-white">${item.name}</h4>
                             <p class="text-[11px] text-zinc-400">${item.sub}</p>
