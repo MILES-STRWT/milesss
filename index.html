@@ -130,7 +130,6 @@
 
     <!-- Main Catalog Container -->
     <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
-        
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 border-b border-zinc-800 pb-4">
             <div>
                 <span class="text-xs text-zinc-500 uppercase tracking-widest font-mono">ALL ITEMS</span>
@@ -139,7 +138,7 @@
             <p id="catalogSubtitle" class="text-xs text-zinc-400 mt-2 md:mt-0 font-mono">Haz clic en cualquier prenda para ver detalles, galería y opciones</p>
         </div>
 
-        <!-- Product Grid Dynamic (15 Items) -->
+        <!-- Product Grid Dynamic -->
         <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             <!-- Renderizado dinámicamente por JS -->
         </div>
@@ -259,11 +258,10 @@
         <p id="footerLocation">TRUJILLO, PERÚ / INTERNATIONAL SHIPPING</p>
     </footer>
 
-    <!-- JavaScript Lógica Bilingüe y Multimoneda -->
+    <!-- JavaScript Lógica Bilingüe, Multimoneda y Doble Número WhatsApp -->
     <script>
-        let currentRegion = 'PE'; // 'PE' = Perú (ES / S/.), 'US' = Estados Unidos (EN / $)
+        let currentRegion = 'PE'; // 'PE' = Perú (ES / S/. / 51966413339), 'US' = Estados Unidos (EN / $ / 15059480111)
 
-        // Diccionario de textos de interfaz
         const uiTexts = {
             PE: {
                 announcement: "⚡ Envíos exprés a todo el Perú & EE. UU. | MILESS STREETWEAR ⚡",
@@ -309,7 +307,6 @@
             }
         };
 
-        // Catálogo con soporte bilingüe y precios por país (S/. 50 en PE | $30 en US)
         const products = [
             { 
                 id: 1, sku: "MLS-CAP-001", baseImg: "gorra-trebol-blanca.png",
@@ -497,6 +494,12 @@
         let activeProduct = null;
         let modalQty = 1;
 
+        // Números de WhatsApp configurados por región
+        const whatsappNumbers = {
+            PE: "51966413339",   // Perú
+            US: "15059480111"    // Estados Unidos
+        };
+
         function formatPrice(amount) {
             return currentRegion === 'PE' ? `S/. ${amount.toFixed(2)}` : `$${amount.toFixed(2)} USD`;
         }
@@ -505,7 +508,6 @@
             currentRegion = region;
             document.documentElement.lang = region === 'PE' ? 'es' : 'en';
 
-            // Actualizar textos estáticos de la interfaz
             const t = uiTexts[region];
             document.getElementById('topAnnouncement').innerText = t.announcement;
             document.getElementById('navHome').innerText = t.navHome;
@@ -525,14 +527,11 @@
             document.getElementById('cartCheckoutBtn').innerText = t.cartCheckout;
             document.getElementById('footerLocation').innerText = t.footerLoc;
 
-            // Actualizar botón selector en header
             document.getElementById('currentFlagIcon').innerText = region === 'PE' ? '🇵🇪' : '🇺🇸';
             document.getElementById('currentCurrencyLabel').innerText = region === 'PE' ? 'PEN' : 'USD';
 
-            // Ocultar pantalla inicial
             document.getElementById('regionGateModal').classList.add('hidden');
 
-            // Re-renderizar catálogo y carrito con los precios y textos de la región elegida
             renderGrid();
             updateCartUI();
         }
@@ -548,21 +547,17 @@
             grid.innerHTML = products.map(p => `
                 <div onclick="openProductModal(${p.id})" class="cursor-pointer group bg-zinc-900/60 border border-zinc-800 hover:border-zinc-500 rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between">
                     <div>
-                        <div class="w-full h-52 bg-white rounded-xl p-3 flex items-center justify-center overflow-hidden">
-                            <img src="${p.baseImg}" alt="${p.name}" class="h-full object-contain group-hover:scale-105 transition-transform duration-300">
+                        <div class="bg-white rounded-xl overflow-hidden h-64 p-4 flex items-center justify-center relative mb-4">
+                            <span class="absolute top-3 left-3 bg-black/80 text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">${p.cat[currentRegion]}</span>
+                            <img src="${p.baseImg}" alt="${p.sub[currentRegion]}" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300">
                         </div>
-                        <div class="mt-4">
-                            <h3 class="text-lg font-black uppercase text-white tracking-tight">${p.name}</h3>
-                            <p class="text-xs text-zinc-400 italic font-medium">${p.sub[currentRegion]}</p>
-                        </div>
+                        <span class="text-[10px] font-mono text-zinc-500 uppercase">${p.sku}</span>
+                        <h3 class="text-sm font-black uppercase text-white tracking-tight mt-0.5">${p.sub[currentRegion]}</h3>
                     </div>
-                    <div class="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between">
-                        <div>
-                            <span class="text-xs text-zinc-500 block font-mono">${p.size[currentRegion]}</span>
-                            <span class="text-base font-extrabold text-white font-mono">${formatPrice(p.price[currentRegion])}</span>
-                        </div>
-                        <span class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 px-3.5 rounded-xl text-xs uppercase flex items-center gap-1.5 transition-colors">
-                            <i class="fa-brands fa-whatsapp text-sm"></i> ${t.viewDetails}
+                    <div class="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between">
+                        <span class="text-base font-black text-white font-mono">${formatPrice(p.price[currentRegion])}</span>
+                        <span class="text-xs font-bold text-zinc-400 group-hover:text-white transition-colors flex items-center gap-1">
+                            ${t.viewDetails} <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </span>
                     </div>
                 </div>
@@ -574,51 +569,37 @@
             modalQty = 1;
             document.getElementById('modalQtyNum').innerText = modalQty;
 
+            const t = uiTexts[currentRegion];
             document.getElementById('modalCategory').innerText = activeProduct.cat[currentRegion];
-            document.getElementById('modalBreadcrumbName').innerText = `${activeProduct.name} ${activeProduct.sub[currentRegion]}`;
+            document.getElementById('modalBreadcrumbName').innerText = activeProduct.sub[currentRegion];
+            document.getElementById('modalMainImg').src = activeProduct.baseImg;
             document.getElementById('modalSKU').innerText = `SKU: ${activeProduct.sku}`;
             document.getElementById('modalTitle').innerText = activeProduct.name;
             document.getElementById('modalSubtitle').innerText = activeProduct.sub[currentRegion];
-            document.getElementById('modalSizeBadge').innerText = activeProduct.size[currentRegion];
             document.getElementById('modalPrice').innerText = formatPrice(activeProduct.price[currentRegion]);
+            document.getElementById('modalSizeBadge').innerText = activeProduct.size[currentRegion];
             document.getElementById('modalDescription').innerText = activeProduct.desc[currentRegion];
 
-            const dotIndex = activeProduct.baseImg.lastIndexOf('.');
-            const baseName = activeProduct.baseImg.substring(0, dotIndex);
-            const ext = activeProduct.baseImg.substring(dotIndex);
-
-            const galleryImages = [
-                activeProduct.baseImg,
-                `${baseName}-2${ext}`,
-                `${baseName}-3${ext}`,
-                `${baseName}-4${ext}`
-            ];
-
-            document.getElementById('modalMainImg').src = galleryImages[0];
-
+            // Miniaturas estáticas simuladas
             const thumbsContainer = document.getElementById('modalThumbnails');
-            thumbsContainer.innerHTML = galleryImages.map((imgSrc, idx) => `
-                <div onclick="changeMainImage('${imgSrc}')" class="cursor-pointer bg-white border ${idx === 0 ? 'border-black ring-2 ring-white' : 'border-zinc-300'} rounded-xl overflow-hidden h-16 p-1 flex items-center justify-center hover:opacity-90 transition-all">
-                    <img src="${imgSrc}" class="w-full h-full object-contain" onerror="this.src='${activeProduct.baseImg}'">
+            thumbsContainer.innerHTML = [activeProduct.baseImg, activeProduct.baseImg, activeProduct.baseImg, activeProduct.baseImg].map(img => `
+                <div class="bg-white border border-zinc-800 rounded-xl h-16 p-2 flex items-center justify-center cursor-pointer hover:border-white transition-all">
+                    <img src="${img}" class="w-full h-full object-contain">
                 </div>
             `).join('');
 
             document.getElementById('productModal').classList.remove('hidden');
         }
 
-        function changeMainImage(src) {
-            document.getElementById('modalMainImg').src = src;
-        }
-
         function closeProductModal() {
             document.getElementById('productModal').classList.add('hidden');
+            activeProduct = null;
         }
 
-        function changeModalQty(delta) {
-            if (modalQty + delta >= 1) {
-                modalQty += delta;
-                document.getElementById('modalQtyNum').innerText = modalQty;
-            }
+        function changeModalQty(change) {
+            modalQty += change;
+            if (modalQty < 1) modalQty = 1;
+            document.getElementById('modalQtyNum').innerText = modalQty;
         }
 
         function addCurrentProductToCart() {
@@ -627,60 +608,24 @@
             if (existing) {
                 existing.qty += modalQty;
             } else {
-                cart.push({ id: activeProduct.id, qty: modalQty });
+                cart.push({ ...activeProduct, qty: modalQty });
             }
             updateCartUI();
             closeProductModal();
             toggleCartDrawer();
         }
 
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartUI();
-        }
+        function buyNowWhatsApp() {
+            if (!activeProduct) return;
+            const p = activeProduct;
+            const priceFormatted = formatPrice(p.price[currentRegion]);
+            const targetNumber = whatsappNumbers[currentRegion]; // Selecciona el número según Perú o USA
 
-        function updateCartUI() {
-            const countBadge = document.getElementById('cartCountBadge');
-            const drawerCount = document.getElementById('cartDrawerCount');
-            const container = document.getElementById('cartItemsContainer');
-            const totalPriceElem = document.getElementById('cartTotalPrice');
-            const t = uiTexts[currentRegion];
+            let message = currentRegion === 'PE' 
+                ? `¡Hola MILESS! 🛒 Deseo comprar este producto:\n\n• *Prenda:* ${p.sub.PE} (${p.sku})\n• *Talla:* ${p.size.PE}\n• *Cantidad:* ${modalQty}\n• *Precio:* ${priceFormatted}\n\nQuedo atento para coordinar el pago y envío.`
+                : `Hello MILESS! 🛒 I would like to buy this item:\n\n• *Item:* ${p.sub.US} (${p.sku})\n• *Size:* ${p.size.US}\n• *Qty:* ${modalQty}\n• *Price:* ${priceFormatted}\n\nPlease let me know how to proceed with payment and shipping.`;
 
-            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-            const totalSum = cart.reduce((sum, item) => {
-                const prod = products.find(p => p.id === item.id);
-                return sum + (prod.price[currentRegion] * item.qty);
-            }, 0);
-
-            countBadge.innerText = totalItems;
-            drawerCount.innerText = totalItems;
-            totalPriceElem.innerText = formatPrice(totalSum);
-
-            if (cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-16 text-zinc-500">
-                        <i class="fa-solid fa-bag-shopping text-4xl mb-3 opacity-20"></i>
-                        <p class="text-xs uppercase tracking-wider">${t.cartEmpty}</p>
-                    </div>
-                `;
-            } else {
-                container.innerHTML = cart.map(item => {
-                    const prod = products.find(p => p.id === item.id);
-                    return `
-                        <div class="py-4 flex items-center justify-between gap-4">
-                            <img src="${prod.baseImg}" class="w-16 h-16 object-contain p-1 bg-white border border-zinc-800 rounded-xl">
-                            <div class="flex-1">
-                                <h4 class="text-xs font-bold uppercase text-white">${prod.name}</h4>
-                                <p class="text-[11px] text-zinc-400">${prod.sub[currentRegion]}</p>
-                                <p class="text-xs font-semibold text-white mt-1">${formatPrice(prod.price[currentRegion])} x ${item.qty}</p>
-                            </div>
-                            <button onclick="removeFromCart(${prod.id})" class="text-zinc-500 hover:text-white p-2">
-                                <i class="fa-solid fa-trash text-sm"></i>
-                            </button>
-                        </div>
-                    `;
-                }).join('');
-            }
+            window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
         function toggleCartDrawer() {
@@ -688,45 +633,74 @@
             drawer.classList.toggle('hidden');
         }
 
-        function buyNowWhatsApp() {
-            if (!activeProduct) return;
-            const unitPrice = activeProduct.price[currentRegion];
-            const total = unitPrice * modalQty;
-            const subName = activeProduct.sub[currentRegion];
-            const sizeName = activeProduct.size[currentRegion];
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCountBadge').innerText = totalItems;
+            document.getElementById('cartDrawerCount').innerText = totalItems;
 
-            const text = currentRegion === 'PE'
-                ? `Hola MILESS®, quiero comprar directo:\n- ${modalQty}x ${activeProduct.name} (${subName}) [${sizeName}]\nTotal: ${formatPrice(total)}`
-                : `Hello MILESS®, I want to buy directly:\n- ${modalQty}x ${activeProduct.name} (${subName}) [${sizeName}]\nTotal: ${formatPrice(total)}`;
+            const container = document.getElementById('cartItemsContainer');
+            const t = uiTexts[currentRegion];
 
-            window.open(`https://wa.me/51966413339?text=${encodeURIComponent(text)}`, '_blank');
+            if (cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-zinc-500 font-mono text-xs uppercase">${t.cartEmpty}</div>`;
+                document.getElementById('cartTotalPrice').innerText = formatPrice(0);
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="flex items-center gap-4 pt-4 first:pt-0">
+                    <div class="bg-white w-16 h-16 rounded-xl flex items-center justify-center p-2 flex-shrink-0 border border-zinc-800">
+                        <img src="${item.baseImg}" class="w-full h-full object-contain">
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="text-xs font-bold uppercase text-white">${item.sub[currentRegion]}</h4>
+                        <p class="text-[11px] font-mono text-zinc-400">${formatPrice(item.price[currentRegion])} x ${item.qty}</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="updateCartItemQty(${item.id}, -1)" class="text-zinc-400 hover:text-white px-1.5 bg-zinc-900 border border-zinc-800 rounded">-</button>
+                            <span class="text-xs font-mono">${item.qty}</span>
+                            <button onclick="updateCartItemQty(${item.id}, 1)" class="text-zinc-400 hover:text-white px-1.5 bg-zinc-900 border border-zinc-800 rounded">+</button>
+                            <button onclick="removeFromCart(${item.id})" class="text-red-400 hover:text-red-300 ml-auto text-xs"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price[currentRegion] * item.qty), 0);
+            document.getElementById('cartTotalPrice').innerText = formatPrice(totalPrice);
+        }
+
+        function updateCartItemQty(id, change) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+            item.qty += change;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(i => i.id !== id);
+            updateCartUI();
         }
 
         function checkoutCartWhatsApp() {
             if (cart.length === 0) return;
-            let text = currentRegion === 'PE'
-                ? "Hola MILESS®, quiero realizar el siguiente pedido:\n\n"
-                : "Hello MILESS®, I would like to place the following order:\n\n";
+            const targetNumber = whatsappNumbers[currentRegion]; // Número dinámico según Perú o USA
 
-            let total = 0;
-            cart.forEach(item => {
-                const prod = products.find(p => p.id === item.id);
-                const lineTotal = prod.price[currentRegion] * item.qty;
-                total += lineTotal;
-                text += `▪️ ${item.qty}x ${prod.name} - ${prod.sub[currentRegion]} (${prod.size[currentRegion]}) [${formatPrice(lineTotal)}]\n`;
-            });
+            let itemsList = cart.map(item => `• ${item.qty}x ${item.sub[currentRegion]} (${item.sku}) - ${formatPrice(item.price[currentRegion] * item.qty)}`).join('\n');
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price[currentRegion] * item.qty), 0);
+            const totalFormatted = formatPrice(totalPrice);
 
-            text += currentRegion === 'PE'
-                ? `\n*TOTAL A PAGAR: ${formatPrice(total)}*`
-                : `\n*TOTAL AMOUNT: ${formatPrice(total)}*`;
+            let message = currentRegion === 'PE'
+                ? `¡Hola MILESS! 🛍️ Deseo finalizar este pedido desde la web:\n\n${itemsList}\n\n*Total a Pagar:* ${totalFormatted}\n\nQuedo a la espera de las coordinaciones de pago y envío.`
+                : `Hello MILESS! 🛍️ I would like to checkout the following items from the store:\n\n${itemsList}\n\n*Total Amount:* ${totalFormatted}\n\nPlease provide payment and shipping instructions.`;
 
-            window.open(`https://wa.me/51966413339?text=${encodeURIComponent(text)}`, '_blank');
+            window.open(`https://wa.me/${targetNumber}?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        window.onload = () => {
-            renderGrid();
-            updateCartUI();
-        };
+        // Inicializar render con región por defecto (Perú)
+        renderGrid();
     </script>
 </body>
 </html>
