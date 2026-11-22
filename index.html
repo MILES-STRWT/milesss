@@ -487,6 +487,42 @@
                     PE: "Tercera edición del polo blanco en tejido pesado con detalles gráficos de la marca en alta fidelidad textil.",
                     US: "Third edition heavyweight white t-shirt featuring high-fidelity brand graphic prints."
                 }
+            },
+            { 
+                id: 16, sku: "MLS-HD-016", baseImg: "polera-negra-oversize.png",
+                cat: { PE: "POLERAS", US: "HOODIES" },
+                name: "MILESS",
+                sub: { PE: "Polera Negra Oversize", US: "Black Oversize Hoodie" },
+                price: { PE: 120, US: 60 },
+                size: { PE: "Talla M - L - XL", US: "Size M - L - XL" },
+                desc: {
+                    PE: "Polera cerrada oversize en algodón pesado con corte boxy, capucha doble y gráfico MILESS en la espalda.",
+                    US: "Heavyweight pullover oversize hoodie with boxy fit, double-lined hood, and MILESS back graphic."
+                }
+            },
+            { 
+                id: 17, sku: "MLS-HD-017", baseImg: "polera-blanca-oversize.png",
+                cat: { PE: "POLERAS", US: "HOODIES" },
+                name: "MILESS",
+                sub: { PE: "Polera Blanca Oversize", US: "White Oversize Hoodie" },
+                price: { PE: 120, US: 60 },
+                size: { PE: "Talla M - L - XL", US: "Size M - L - XL" },
+                desc: {
+                    PE: "Polera cerrada oversize blanca con corte relajado, acabado streetwear y detalle MILESS en la espalda.",
+                    US: "White pullover oversize hoodie with relaxed streetwear fit and MILESS back print."
+                }
+            },
+            { 
+                id: 18, sku: "MLS-HD-018", baseImg: "polera-marron-oversize.png",
+                cat: { PE: "POLERAS", US: "HOODIES" },
+                name: "MILESS",
+                sub: { PE: "Polera Marrón Oversize", US: "Brown Oversize Hoodie" },
+                price: { PE: 120, US: 60 },
+                size: { PE: "Talla M - L - XL", US: "Size M - L - XL" },
+                desc: {
+                    PE: "Polera cerrada oversize en tono marrón con fit boxy holgado y estampado MILESS en la espalda.",
+                    US: "Brown pullover oversize hoodie with boxy fit and MILESS back graphic."
+                }
             }
         ];
 
@@ -594,9 +630,7 @@
         function closeProductModal() {
             document.getElementById('productModal').classList.add('hidden');
             activeProduct = null;
-        }
-
-        function changeModalQty(change) {
+        }                                                                                                                                                                                             function changeModalQty(change) {
             modalQty += change;
             if (modalQty < 1) modalQty = 1;
             document.getElementById('modalQtyNum').innerText = modalQty;
